@@ -1,10 +1,27 @@
 {
-	"color_scheme": "Packages/Theme - Brogrammer/brogrammer.tmTheme",
-	"font_size": 11,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"font_size": 13,
 	"ignored_packages":
 	[
-		
 	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"material_theme_accent_blue": true,
+	"material_theme_accent_scrollbars": true,
+	"material_theme_bright_scrollbars": true,
+	"material_theme_compact_panel": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_panel_separator": true,
+	"material_theme_small_tab": true,
+	"overlay_scroll_bars": "enabled",
 	"remember_full_screen": true,
-	"theme": "Adaptive.sublime-theme"
+	"theme": "Agila Monokai.sublime-theme",
+	"theme_agila_horizontal_scrollbar_thin": false,
+	"theme_agila_vertical_scrollbar_thin": false
 }
