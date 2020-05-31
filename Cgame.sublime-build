@@ -1,0 +1,4 @@
+{
+	"shell_cmd": "make",
+	"file_regex": "c$"
+}
