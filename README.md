@@ -13,3 +13,5 @@ Also, "ctrl+[" enters normal mode at the moment, although some day I hope use th
 init.vim:
 I currently use Plug as my package manager of sorts. Also, I've installed a few plugins just to make sure it works to an at least barebones extent.
 Alongside this, I've added a bunch of custom bindings with the leader key. It just makes a lot of things more convenient for me now.
+
+This is not currently exactly up to date, but I will update this repository every few months, as I make frequent changes to my configuration files and right now I haven't set up a way to manually update them.
