@@ -1,4 +1,4 @@
-<h3> Dofiles </h3>
+<h3> Dotfiles </h3>
 
 I've updated my configuration a lot now, and it should probably be easy for me to keep this up to date as I've just used some symlinks across the system to make everything work fine
 
