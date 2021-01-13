@@ -1,17 +1,15 @@
 # General Configurations
 
-This currently contains just my Sublime Text customisation along with my version of Neovim's init.vim file
-There's a lot of custom changes to be made in the future.
+I've updated my configuration a lot now, and it should probably be easy for me to keep this up to date as I've just used some symlinks across the system to make everything work fine
 
 Changes with respect to Sublime Text: <br>
 Vintage mode has been disabled, and there are a bunch of plugins I could install.
-My personal key bindings and user settings I use have been uploaded into this repository. 
+My personal key bindings and user settings I use have been uploaded into this repository.
 The theme I prefer is the agila theme and monokai colour scheme at the moment, though that probably isn't final.
 Finally, there's a couple of key binding changes, such as setting "ctrl+shift+]" as unindent.
 Also, "ctrl+[" enters normal mode at the moment, although some day I hope use the Caps Lock button to do it instead.
 
-init.vim:
-I currently use Plug as my package manager of sorts. Also, I've installed a few plugins just to make sure it works to an at least barebones extent.
-Alongside this, I've added a bunch of custom bindings with the leader key. It just makes a lot of things more convenient for me now.
+Although I'd carefully documented my sublime text config in detail, the rest is a lot more difficult to explain in a README.
+I've left comments to explain my changes in the actual config files themselves, wherever necessary.
 
-This is not currently exactly up to date, but I will update this repository every few months, as I make frequent changes to my configuration files and right now I haven't set up a way to manually update them.
+At the moment, I don't have too many folders as this isn't that cluttered yet, but that is definitely subject to change, especially if I decide to split up my init.vim into multiple files

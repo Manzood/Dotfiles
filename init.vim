@@ -1,4 +1,5 @@
 " -------------------------------Notes and tips-----------------------------
+" The original dotfile is located at ~/.config/nvim/init.vim
 " This is actually not the first file nvim looks at, but I've set up my init.vim to source this file
 
 " NOTE: make sure to fix airline, because it's totally broken at the moment
