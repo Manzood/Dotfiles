@@ -124,6 +124,7 @@ let NERDTreeShowHidden=1
 "^S to save file
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
+vnoremap <c-c> "+y
 nmap <leader>y ggVG"+y''
 nmap <leader>d ggdG
 nnoremap <space>h :wincmd h<cr>
