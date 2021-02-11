@@ -8,6 +8,8 @@
 " My leader is now space, since I would like to use comma to search backwards, and I think it will probably hold me back otherwise
 let mapleader = " "
 
+"mapping jk as escape
+:imap jk <Esc>
 
 " ----------------------------vim-plug section-------------------------------
 " Plug was installed from https://github.com/junegunn/vim-plug
