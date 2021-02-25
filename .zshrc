@@ -145,4 +145,6 @@ function mkcd
   mkdir -p "$dir" && cd "$dir";
 }
 
+alias xgraph='~/Applications/xgraph/XGraph4.38_linux64/bin/xgraph'
+
 

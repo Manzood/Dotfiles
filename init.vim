@@ -9,7 +9,8 @@
 let mapleader = " "
 
 "mapping jk as escape
-:imap jk <Esc>
+" :imap jk <Esc>
+
 
 " ----------------------------vim-plug section-------------------------------
 " Plug was installed from https://github.com/junegunn/vim-plug
@@ -27,6 +28,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'luochen1990/rainbow'
+Plug 'vimwiki/vimwiki'
 " Colorschemes:
 Plug 'romgrk/doom-one.vim'
 Plug 'patstockwell/vim-monokai-tasty'
@@ -120,6 +122,13 @@ let NERDCreateDefaultMappings=0 "Set it to 1 to re-enable the default mappings
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 
+"-- VimWiki --
+let g:vimwiki_list = [{'path':'~/VimWiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+"Makes vimwiki markdown links as [text](text.md) instead of [text](text)
+let g:vimwiki_markdown_link_ext = 1
+let g:markdown_folding = 1
+
 " --------------------------------Helpful for CP-------------------------------
 " -------------------------------and useful remaps-----------------------------
 
@@ -148,9 +157,12 @@ nnoremap <leader>s :e ~/Coding/Snippets/
 map <C-_> <plug>NERDCommenterInvert
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
+" vimwiki
+nmap <C-t> <C-Space>
 
 autocmd filetype cpp map <C-B> :w <bar> !g++ -std=c++17 -Wshadow -Wall -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype cpp nnoremap <leader>r :w <bar> !g++ -std=c++17 -Wshadow -Wall -Wno-unused-result % -D local -o %< && ./%< < in <cr>
+autocmd filetype c map <C-B> :w <bar> !gcc -std=c17 -Wshadow -Wall -Wno-unused-result % -D local -o %< <CR>
 
 " Useful for future code templates
 " Update: I've actually made this command work, of sorts
@@ -193,6 +205,7 @@ endif
   let g:airline_symbols.linenr = '☰'
   let g:airline_symbols.maxlinenr = ''
   let g:airline_symbols.dirty='⚡'
+
 
 "----------------------------Functions for extra convenience-----------------------
 fun! TrimWhitespace()

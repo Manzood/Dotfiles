@@ -137,7 +137,7 @@ shopt -s cdspell
 #added function to cd and ls
 #function cl () {
 #    new_dir="$*";
-#    if [ $# -eq 0 ]; then 
+#    if [ $# -eq 0 ]; then
 #        new_dir=$HOME;
 #    fi;
 #    builtin cd "${DIR}" && ls
@@ -194,3 +194,7 @@ function mkcd () {
     new_dir="$*";
     mkdir "${new_dir}" && cd "${new_dir}"
 }
+
+# Aliasing xgraph
+alias xgraph=/home/bart/XGraph/bin/xgraph
+
