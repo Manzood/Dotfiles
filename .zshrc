@@ -133,7 +133,7 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
 fi
 
 alias makeprobs='bash ~/Scripts/makeprobs.sh'
-alias makecontest='~/Scripts/makecontest.sh'
+alias makecontest='bash ~/Scripts/makecontest.sh'
 
 [[ -s /home/manzood/.autojump/etc/profile.d/autojump.sh ]] && source /home/manzood/.autojump/etc/profile.d/autojump.sh
 
@@ -147,4 +147,4 @@ function mkcd
 
 alias xgraph='~/Applications/xgraph/XGraph4.38_linux64/bin/xgraph'
 
-
+alias bright='zsh ~/Scripts/brightness_script.sh'

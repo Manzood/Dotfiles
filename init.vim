@@ -39,6 +39,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sickill/vim-monokai'
 Plug 'chriskempson/base16-vim'
+
 "Plug 'ThePrimeagen/vim-be-good'
 " call remove(g:plugs, 'YouCompleteMe')
 " Plug 'ycm-core/YouCompleteMe', { 'on': [] }
@@ -128,6 +129,9 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 "Makes vimwiki markdown links as [text](text.md) instead of [text](text)
 let g:vimwiki_markdown_link_ext = 1
 let g:markdown_folding = 0
+
+" -- YouCompleteMe --
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 
 " --------------------------------Helpful for CP-------------------------------
 " -------------------------------and useful remaps-----------------------------
