@@ -9,8 +9,7 @@
 let mapleader = " "
 
 "mapping jk as escape
-:imap jk <Esc>
-:cmap jk <Esc>
+" :imap jk <Esc>
 
 
 " ----------------------------vim-plug section-------------------------------
@@ -21,6 +20,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdcommenter'
@@ -28,13 +29,6 @@ Plug 'preservim/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'luochen1990/rainbow'
 Plug 'vimwiki/vimwiki'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-" Getting Treesitter
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
 " Colorschemes:
 Plug 'romgrk/doom-one.vim'
 Plug 'patstockwell/vim-monokai-tasty'
@@ -45,21 +39,16 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sickill/vim-monokai'
 Plug 'chriskempson/base16-vim'
-Plug 'ghifarit53/tokyonight-vim'
 
-" vim-be-good'
-" Plug 'ThePrimeagen/vim-be-good'
+"Plug 'ThePrimeagen/vim-be-good'
 " call remove(g:plugs, 'YouCompleteMe')
 " Plug 'ycm-core/YouCompleteMe', { 'on': [] }
-
 call plug#end()
 runtime! plugin/sensible.vim
 
 " --------------------------general configuration---------------------------
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines
 set noerrorbells
-" Changing the timeout, i.e. the amount of time vim waits for a mapped key
-set timeoutlen=100
 " indentation
 set tabstop=4
 set softtabstop=4
@@ -136,7 +125,7 @@ let NERDTreeShowHidden=1
 
 "-- VimWiki --
 let g:vimwiki_list = [{'path':'~/VimWiki', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'mardown'}
 "Makes vimwiki markdown links as [text](text.md) instead of [text](text)
 let g:vimwiki_markdown_link_ext = 1
 let g:markdown_folding = 0
@@ -233,22 +222,3 @@ augroup TEMPGROUP
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
-
-
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" Using lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-
-" let g:tokyonight_style = 'storm' " available: night, storm
-" let g:tokyonight_enable_italic = 1
-
-" colorscheme tokyonight
