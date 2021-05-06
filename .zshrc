@@ -149,7 +149,7 @@ alias xgraph='~/Applications/xgraph/XGraph4.38_linux64/bin/xgraph'
 
 alias bright='zsh ~/Scripts/brightness_script.sh'
 
-alias nvim='~/Downloads/Temp/nvim.appimage'
+# alias nvim='~/Downloads/Temp/nvim.appimage'
 
 alias scilab='~/Applications/Scilab/Scilab-x86_64.AppImage'
 
