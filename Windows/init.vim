@@ -125,7 +125,7 @@ let NERDTreeShowHidden=1
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
 vnoremap <c-c> "+y
-nmap <eader>y ggVG"+y''
+nmap <leader>y ggVG"+y''
 nmap <leader>d ggdG
 nnoremap <space>h :wincmd h<cr>
 nnoremap <space>l :wincmd l<cr>
@@ -202,4 +202,4 @@ endfun
 augroup TEMPGROUP
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
-augroup ENDl
+augroup END
