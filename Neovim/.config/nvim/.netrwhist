@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home'
+let g:netrw_dirhist_8='/home/manzood'
+let g:netrw_dirhist_7='/home/manzood/.config'
+let g:netrw_dirhist_6='/home/manzood/.config/BraveSoftware'
+let g:netrw_dirhist_5='/home/manzood/.config/BraveSoftware/Brave-Browser'
+let g:netrw_dirhist_4='/home/manzood/.config/BraveSoftware'
+let g:netrw_dirhist_3='/home/manzood/.config'
+let g:netrw_dirhist_2='/home/manzood'
+let g:netrw_dirhist_1='/home/manzood/Coding/Lab/DS/Week6/week6dslabprogram'
+let g:netrw_dirhist_0='/home/manzood/Coding/Lab/DS/Week6'
