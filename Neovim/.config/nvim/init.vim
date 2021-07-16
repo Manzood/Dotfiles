@@ -1,11 +1,6 @@
-" -------------------------------Notes and tips-----------------------------
-" The original dotfile is located at ~/.config/nvim/init.vim
-" This is actually not the first file nvim looks at, but I've set up my init.vim to source this file
+" ---------------------------- most important mappings --------------------------
 
-" NOTE: make sure to fix airline, because it's totally broken at the moment
-" I think the key is to switch to a patched font
-
-" My leader is now space, since I would like to use comma to search backwards, and I think it will probably hold me back otherwise
+" mapping leader to space
 let mapleader = " "
 
 "mapping jk as escape
@@ -13,9 +8,8 @@ let mapleader = " "
 :cmap jk <Esc>
 
 
-" ----------------------------vim-plug section-------------------------------
+" ---------------------------- vim-plug section -------------------------------
 " Plug was installed from https://github.com/junegunn/vim-plug
-" To look up syntax or help, their README.md is pretty well written
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
@@ -62,6 +56,7 @@ Plug 'phanviet/vim-monokai-pro'
 
 call plug#end()
 runtime! plugin/sensible.vim
+
 
 " --------------------------general configuration---------------------------
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines
@@ -152,6 +147,7 @@ let g:markdown_folding = 0
 " -- YouCompleteMe --
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 
+
 " --------------------------------Helpful for CP-------------------------------
 " -------------------------------and useful remaps-----------------------------
 
@@ -184,12 +180,11 @@ map <C-n> :NERDTreeToggle<CR>
 nmap <C-t> <C-Space>
 
 autocmd filetype cpp map <C-B> :w <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
-autocmd filetype cpp map <C-R> :w <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
+autocmd filetype cpp map <C-Q> :w <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
 autocmd filetype cpp nnoremap <leader>r :w <bar> !g++ -std=c++17 -Wshadow -Wall -Wno-unused-result % -D local -o %< && ./%< < in <cr>
 autocmd filetype c map <C-B> :w <bar> !gcc -std=c17 -Wshadow -Wall -Wno-unused-result % -D local -o %< <CR>
 
 " Useful for future code templates
-" Update: I've actually made this command work, of sorts
 " autocmd BufNewFile *.cpp -r ~/Coding/Templates/template.cpp | :9 | :delete | :7
 
 
