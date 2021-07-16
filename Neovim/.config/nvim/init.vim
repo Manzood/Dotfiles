@@ -6,12 +6,17 @@ let mapleader = " "
 "mapping jk as escape
 :imap jk <Esc>
 :cmap jk <Esc>
+" :imap kj <Esc>
+" :cmap kj <Esc>
+:imap JK <Esc>
+:cmap JK <Esc>
 
 
 " ---------------------------- vim-plug section -------------------------------
 " Plug was installed from https://github.com/junegunn/vim-plug
 
 call plug#begin('~/.config/nvim/plugged')
+
 Plug 'tpope/vim-sensible'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -21,7 +26,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'luochen1990/rainbow'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -33,7 +38,7 @@ Plug 'kyazdani42/nvim-web-devicons' " lua
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Colorschemes:
-Plug 'romgrk/doom-one.vim'
+" Plug 'romgrk/doom-one.vim'
 " Plug 'patstockwell/vim-monokai-tasty'
 Plug 'overcache/NeoSolarized'
 Plug 'morhetz/gruvbox'
@@ -44,6 +49,9 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chriskempson/base16-vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'phanviet/vim-monokai-pro'
+Plug 'projekt0n/github-nvim-theme'
+
+" Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
 " Plug 'marko-cerovac/material.nvim', { 'branch': 'colorbuddy' }
 " Plug 'marko-cerovac/material.nvim', { 'branch': 'pure-lua' } " Compatible with treesitter, LSP, and a bunch of other stuff
@@ -109,6 +117,14 @@ if has("autocmd")
   \ endif
 endif
 
+" cursor line stuff
+" augroup CursorLine
+  " au!
+  " au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  " au WinLeave * setlocal nocursorline
+" augroup END
+:nnoremap <Leader>\c :set cursorline! cursorcolumn!<CR>
+
 
 "----------------------------------Plugin Config---------------------------------------
 " -- rainbow config --
@@ -157,14 +173,13 @@ imap <c-s> <Esc>:w<CR>a
 vnoremap <c-c> "+y
 nmap <leader>y ggVG"+y''
 nmap <leader>d ggdG
-nnoremap <space>h :wincmd h<cr>
-nnoremap <space>l :wincmd l<cr>
-nnoremap <space>j :wincmd j<cr>
-nnoremap <space>k :wincmd k<cr>
+nnoremap <C-h> :wincmd h<cr>
+nnoremap <C-l> :wincmd l<cr>
+nnoremap <C-j> :wincmd j<cr>
+nnoremap <C-k> :wincmd k<cr>
 nnoremap <leader>gd :YcmCompleter GoTo<cr>
 nnoremap <leader>o :!alacritty<cr>
 nnoremap <leader>c :e ~/Dotfiles/Neovim/.config/nvim/init.vim<cr>
-nnoremap <leader>wq :wq<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
@@ -179,10 +194,10 @@ map <C-n> :NERDTreeToggle<CR>
 " vimwiki
 nmap <C-t> <C-Space>
 
-autocmd filetype cpp map <C-B> :w <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
-autocmd filetype cpp map <C-Q> :w <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
-autocmd filetype cpp nnoremap <leader>r :w <bar> !g++ -std=c++17 -Wshadow -Wall -Wno-unused-result % -D local -o %< && ./%< < in <cr>
-autocmd filetype c map <C-B> :w <bar> !gcc -std=c17 -Wshadow -Wall -Wno-unused-result % -D local -o %< <CR>
+autocmd filetype cpp map <C-B> :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
+autocmd filetype cpp map <C-Q> :wall <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
+autocmd filetype cpp nnoremap <leader>r :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <cr>
+autocmd filetype c map <C-B> :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 
 " Useful for future code templates
 " autocmd BufNewFile *.cpp -r ~/Coding/Templates/template.cpp | :9 | :delete | :7
@@ -197,7 +212,7 @@ set termguicolors
 " colorscheme vim-monokai-tasty
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
-autocmd vimenter * colorscheme monokai_pro
+autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
@@ -251,6 +266,10 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>
+nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<cr>
+nnoremap <leader>s <cmd>cd ~/Coding/Competitive-Programming/Snippets <bar> lua require('telescope.builtin').find_files()<cr>
+
 
 
 " let g:tokyonight_style = 'storm' " available: night, storm
@@ -261,3 +280,19 @@ nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>
 lua require ('eviline')
 
 let g:material_style = 'palenight'
+
+
+" github theme config - refer to https://github.com/projekt0n/github-nvim-theme
+lua require('github-theme').setup()
+
+" Example config in VimScript
+lua << EOF
+require("github-theme").setup({
+  -- functionStyle = "italic",
+  themeStyle = "dark",
+  sidebars = {"qf", "vista_kind", "terminal", "packer"},
+
+  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  -- colors = {hint = "orange", error = "#ff0000"}
+})
+EOF

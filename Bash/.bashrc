@@ -198,3 +198,10 @@ function mkcd () {
 # Aliasing xgraph
 alias xgraph=/home/bart/XGraph/bin/xgraph
 
+
+
+# leave this in the bottom, just in case
+
+source /home/manzood/Applications/alacritty/extra/completions/alacritty.bash
+. "$HOME/.cargo/env"
+
