@@ -1,3 +1,15 @@
+" to be considered later
+
+" nnoremap cn *``cgn
+" nnoremap cN *``cgN
+
+" - Go on top of a word you want to change
+" - Press cn or cN
+" - Type the new word you want to replace it with
+" - Smash that dot '.' multiple times to change all the other occurrences of the word
+" It's quicker than searching or replacing. It's pure magic.
+
+
 " ---------------------------- most important mappings --------------------------
 
 " mapping leader to space
@@ -67,6 +79,7 @@ runtime! plugin/sensible.vim
 
 
 " --------------------------general configuration---------------------------
+" set lazyredraw
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines
 set noerrorbells
 " Changing the timeout, i.e. the amount of time vim waits for a mapped key
@@ -167,6 +180,34 @@ let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 " --------------------------------Helpful for CP-------------------------------
 " -------------------------------and useful remaps-----------------------------
 
+" Make Y behave consistently, similar to D and C
+nnoremap Y y$
+
+" Keep screen centered when you move around
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+"Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap ; ;<c-g>u
+
+" cool text movements in all modes
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" inoremap <C-j> <esc>:m .+1<CR>==
+" inoremap <C-k> <esc>:m .-2<CR>==
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+
+" better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+
 "^S to save file
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
@@ -197,7 +238,9 @@ nmap <C-t> <C-Space>
 autocmd filetype cpp map <C-B> :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype cpp map <C-Q> :wall <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
 autocmd filetype cpp nnoremap <leader>r :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <cr>
+autocmd filetype cpp nnoremap <leader>n :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
 autocmd filetype c map <C-B> :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
+autocmd filetype c nnoremap <leader>n :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
 
 " Useful for future code templates
 " autocmd BufNewFile *.cpp -r ~/Coding/Templates/template.cpp | :9 | :delete | :7
@@ -260,6 +303,7 @@ augroup END
 " nnoremap <leader>f <cmd>Telescope live_grep<cr>
 " nnoremap <leader>f <cmd>Telescope buffers<cr>
 " nnoremap <leader>f <cmd>Telescope help_tags<cr>
+
 
 " Using lua functions
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>

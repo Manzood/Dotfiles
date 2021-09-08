@@ -157,3 +157,9 @@ alias scilab='~/Applications/Scilab/Scilab-x86_64.AppImage'
 
 alias nvim='~/Applications/neovim/nvim.appimage'
 
+# ulimit -s unlimited
+
+export GCM_CREDENTIAL_STORE="gpg"
+
+alias go='/usr/local/go/bin/go'
+
