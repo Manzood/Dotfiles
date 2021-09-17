@@ -163,3 +163,5 @@ export GCM_CREDENTIAL_STORE="gpg"
 
 alias go='/usr/local/go/bin/go'
 
+# export PATH="~/.local/bin"
+

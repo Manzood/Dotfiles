@@ -45,6 +45,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 " Getting Treesitter
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -106,6 +109,7 @@ set tw=0
 set ignorecase " I'll probably change this up in the future
 set scrolloff=5
 set signcolumn=yes
+set inccommand=nosplit
 let g:python3_host_prog = '/usr/bin/python3'
 
 augroup vimrc
@@ -122,6 +126,7 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
     autocmd BufLeave,FocusLost,InsertEnter * set nornu
 augroup END
+
 if has("autocmd")
 " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
@@ -129,6 +134,11 @@ if has("autocmd")
   \   exe "normal g'\"" |
   \ endif
 endif
+
+augroup highlight_yankk
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
 
 " cursor line stuff
 " augroup CursorLine
@@ -340,3 +350,11 @@ require("github-theme").setup({
   -- colors = {hint = "orange", error = "#ff0000"}
 })
 EOF
+
+let g:UltiSnipsExpandTrigger="<c-x>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
