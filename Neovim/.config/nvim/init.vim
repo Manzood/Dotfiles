@@ -64,7 +64,6 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chriskempson/base16-vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'projekt0n/github-nvim-theme'
 
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
@@ -335,25 +334,9 @@ lua require ('eviline')
 
 let g:material_style = 'palenight'
 
-
-" github theme config - refer to https://github.com/projekt0n/github-nvim-theme
-lua require('github-theme').setup()
-
-" Example config in VimScript
-lua << EOF
-require("github-theme").setup({
-  -- functionStyle = "italic",
-  themeStyle = "dark",
-  sidebars = {"qf", "vista_kind", "terminal", "packer"},
-
-  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-  -- colors = {hint = "orange", error = "#ff0000"}
-})
-EOF
-
 let g:UltiSnipsExpandTrigger="<c-x>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-c>"
+let g:UltiSnipsJumpBackwardTrigger="<c-v>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
