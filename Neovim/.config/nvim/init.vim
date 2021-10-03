@@ -36,7 +36,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight' " Might not even be necessary with treesitter?
 Plug 'luochen1990/rainbow'
 " Plug 'vimwiki/vimwiki'
 Plug 'nvim-lua/popup.nvim'
@@ -176,11 +176,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowHidden=1
 
 "-- VimWiki --
-let g:vimwiki_list = [{'path':'~/VimWiki', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-"Makes vimwiki markdown links as [text](text.md) instead of [text](text)
-let g:vimwiki_markdown_link_ext = 1
-let g:markdown_folding = 0
+
+" let g:vimwiki_list = [{'path':'~/VimWiki', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" let g:vimwiki_markdown_link_ext = 1                   " Makes vimwiki markdown links as [text](text.md) instead of [text](text)
+" let g:markdown_folding = 1
 
 " -- YouCompleteMe --
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'

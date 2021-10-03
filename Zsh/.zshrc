@@ -163,5 +163,7 @@ export GCM_CREDENTIAL_STORE="gpg"
 
 alias go='/usr/local/go/bin/go'
 
+alias cmake='~/Applications/cmake-3.21.3-linux-x86_64/bin/cmake'
+
 # export PATH="~/.local/bin"
 
