@@ -64,6 +64,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chriskempson/base16-vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'phanviet/vim-monokai-pro'
+Plug 'Mofiqul/vscode.nvim'
 
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
