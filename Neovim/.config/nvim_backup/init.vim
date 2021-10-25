@@ -33,8 +33,7 @@ Plug 'tpope/vim-sensible'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'ycm-core/YouCompleteMe'
-Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight' " Might not even be necessary with treesitter?
@@ -49,20 +48,9 @@ Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-
-"LSPKind and LSP-colors
-Plug 'onsails/lspkind-nvim'
-Plug 'folke/lsp-colors.nvim'
 
 " Getting Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Colorschemes:
 " Plug 'romgrk/doom-one.vim'
@@ -81,7 +69,7 @@ Plug 'Mofiqul/vscode.nvim'
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
 " Plug 'marko-cerovac/material.nvim', { 'branch': 'colorbuddy' }
-Plug 'marko-cerovac/material.nvim'
+" Plug 'marko-cerovac/material.nvim', { 'branch': 'pure-lua' } " Compatible with treesitter, LSP, and a bunch of other stuff
 
 
 " vim-be-good'
@@ -122,7 +110,6 @@ set ignorecase " I'll probably change this up in the future
 set scrolloff=5
 set signcolumn=yes
 set inccommand=nosplit
-set pumblend=20
 let g:python3_host_prog = '/usr/bin/python3'
 
 augroup vimrc
@@ -344,6 +331,7 @@ nnoremap <leader>s <cmd>cd ~/Coding/Competitive-Programming/Snippets <bar> lua r
 
 " colorscheme tokyonight
 
+lua require ('eviline')
 
 let g:material_style = 'palenight'
 
@@ -353,15 +341,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-v>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-lua require ('eviline')
-lua require ('lsp-and-cmp')
-" lua require ('treesitter')
-
-" ------------------------------------------------ nvim-cmp --------------------------------------------------------
-
-set completeopt=menu,menuone
-
-
-" Changing the highlight
 

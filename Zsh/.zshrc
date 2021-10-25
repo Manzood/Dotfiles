@@ -167,3 +167,5 @@ alias cmake='~/Applications/cmake-3.21.3-linux-x86_64/bin/cmake'
 
 # export PATH="~/.local/bin"
 
+
+alias luamake=/home/manzood/Downloads/Temp/LuaLSP/lua-language-server/3rd/luamake/luamake
