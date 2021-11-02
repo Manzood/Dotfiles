@@ -47,7 +47,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -58,7 +58,8 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 "LSPKind and LSP-colors
 Plug 'onsails/lspkind-nvim'
-Plug 'folke/lsp-colors.nvim'
+" Plug 'folke/lsp-colors.nvim'
+Plug 'glepnir/lspsaga.nvim'
 
 " Getting Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -357,6 +358,7 @@ let g:UltiSnipsEditSplit="vertical"
 lua require ('eviline')
 lua require ('lsp-and-cmp')
 " lua require ('treesitter')
+lua require ('mylspsaga')
 
 " ------------------------------------------------ nvim-cmp --------------------------------------------------------
 
@@ -364,4 +366,16 @@ set completeopt=menu,menuone
 
 
 " Changing the highlight
+
+nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
+nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
 
