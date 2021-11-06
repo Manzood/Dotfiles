@@ -23,7 +23,6 @@ let mapleader = " "
 :imap JK <Esc>
 :cmap JK <Esc>
 
-
 " ---------------------------- vim-plug section -------------------------------
 " Plug was installed from https://github.com/junegunn/vim-plug
 
@@ -43,7 +42,7 @@ Plug 'luochen1990/rainbow'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'SirVer/ultisnips'
@@ -154,6 +153,8 @@ augroup highlight_yankk
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+" au! BufWritePost $MYVIMRC source % " Auto source my vimrc
+
 " cursor line stuff
 " augroup CursorLine
   " au!
@@ -242,6 +243,10 @@ nnoremap <C-h> :wincmd h<cr>
 nnoremap <C-l> :wincmd l<cr>
 nnoremap <C-j> :wincmd j<cr>
 nnoremap <C-k> :wincmd k<cr>
+nnoremap <M-h> :vertical resize +2<cr>
+nnoremap <M-l> :vertical resize -2<cr>
+nnoremap <M-j> :resize -2<cr>
+nnoremap <M-k> :resize +2<cr>
 nnoremap <leader>gd :YcmCompleter GoTo<cr>
 nnoremap <leader>o :!alacritty<cr>
 nnoremap <leader>c :e ~/Dotfiles/Neovim/.config/nvim/init.vim<cr>
@@ -272,6 +277,7 @@ autocmd filetype c nnoremap <leader>n :wall <bar> !gcc -std=c17 -Wall -Wextra -W
 
 "-------------------------------Visual Customization------------------------------
 
+set t_Co=256
 set termguicolors
 "let g:solarized_termcolors=256
 
@@ -279,7 +285,8 @@ set termguicolors
 " colorscheme vim-monokai-tasty
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
-autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
+" autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
+colorscheme monokai_pro
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
@@ -322,22 +329,6 @@ augroup TEMPGROUP
 augroup END
 
 
-" Find files using Telescope command-line sugar.
-" nnoremap <leader>f <cmd>Telescope find_files<cr>
-" nnoremap <leader>f <cmd>Telescope live_grep<cr>
-" nnoremap <leader>f <cmd>Telescope buffers<cr>
-" nnoremap <leader>f <cmd>Telescope help_tags<cr>
-
-
-" Using lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>
-nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>
-nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<cr>
-nnoremap <leader>s <cmd>cd ~/Coding/Competitive-Programming/Snippets <bar> lua require('telescope.builtin').find_files()<cr>
-
 
 
 " let g:tokyonight_style = 'storm' " available: night, storm
@@ -349,33 +340,53 @@ nnoremap <leader>s <cmd>cd ~/Coding/Competitive-Programming/Snippets <bar> lua r
 let g:material_style = 'palenight'
 
 let g:UltiSnipsExpandTrigger="<c-x>"
-let g:UltiSnipsJumpForwardTrigger="<c-c>"
-let g:UltiSnipsJumpBackwardTrigger="<c-v>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="c-x"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
 
 lua require ('eviline')
 lua require ('lsp-and-cmp')
 " lua require ('treesitter')
 lua require ('mylspsaga')
+lua require ('telescope-config')
+lua require ('finders')
 
 " ------------------------------------------------ nvim-cmp --------------------------------------------------------
 
-set completeopt=menu,menuone
+set completeopt=menu,menuone,noselect
 
 
-" Changing the highlight
 
-nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-nnoremap <silent> gh :Lspsaga lsp_finder<CR>
-nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
+" ---------------------------------------- Telescope keybinds ------------------------------------------------------------------------------
+" This section has to go after telescope config is sourced
+
+" Using lua functions
+nnoremap <leader>ff <cmd>lua require('telescope-config').project_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>
+nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<cr>
+" nnoremap <leader>s <cmd>cd ~/Coding/Competitive-Programming/Snippets <bar> lua require('telescope.builtin').find_files()<cr>
+" nnoremap <leader>c <cmd>cd ~/Dotfiles/Neovim/.config/nvim <bar> lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>c <cmd>lua require('finders').fd_in_nvim()<cr>
+nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
+
+" highlight LspDiagnosticsDefaultError ctermfg=LightBlue cterm=Italic
+
+" highlight DiagnosticError guifg='#ff0000' guibg='#00ff00' gui='bold'
+
+" highlight LspDiagnosticsDefaultError guifg=BrightRed
+" highlight LspDiagnosticsDefaultWarning guifg=BrightYellow
+" highlight LspReferenceText cterm=bold guibg=LightYellow
+" highlight LspReferenceRead cterm=bold ctermbg=0 guibg=LightYellow
+" highlight LspReferenceWrite cterm=bold ctermbg=0 guibg=LightYellow
+
+
+" transparent background, uncomment to make background transparent
+" hi Normal guibg=NONE ctermbg=NONE
 

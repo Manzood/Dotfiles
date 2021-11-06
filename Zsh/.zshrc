@@ -169,3 +169,5 @@ alias cmake='~/Applications/cmake-3.21.3-linux-x86_64/bin/cmake'
 
 
 alias luamake=/home/manzood/Downloads/Temp/LuaLSP/lua-language-server/3rd/luamake/luamake
+
+zmodload zsh/zprof
