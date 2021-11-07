@@ -120,7 +120,7 @@ set splitright splitbelow
 set tw=0
 set ignorecase " I'll probably change this up in the future
 set scrolloff=5
-set signcolumn=yes
+set signcolumn=no " toggle the signcolumn to yes for YouCompleteMe
 set inccommand=nosplit
 set pumblend=20
 let g:python3_host_prog = '/usr/bin/python3'
@@ -237,7 +237,7 @@ vnoremap > >gv
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
 vnoremap <c-c> "+y
-nmap <leader>y ggVG"+y''
+nmap <leader>y :%y+<cr>
 nmap <leader>d ggdG
 nnoremap <C-h> :wincmd h<cr>
 nnoremap <C-l> :wincmd l<cr>
