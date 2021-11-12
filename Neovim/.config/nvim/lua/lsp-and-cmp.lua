@@ -135,6 +135,7 @@ cmp.setup({
         -- { name = 'snippy' }, -- For snippy users.
     }, {
         { name = 'buffer', keyword_length = 5 },
+        -- { max_item_count = 10 }, -- did not work, for some reason
     }),
     experimental = {
         native_menu = false,

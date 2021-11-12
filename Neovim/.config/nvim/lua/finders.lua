@@ -5,7 +5,7 @@ local finders = {}
 local center_list = require'telescope.themes'.get_dropdown({
   winblend = 10,
   width = 0.5,
-  prompt = " ",
+  prompt = " ❯ ",
   results_height = 15,
   previewer = false,
 })
@@ -24,7 +24,7 @@ local with_preview = {
 -- Find in neovim config with center theme
 finders.fd_in_nvim = function()
   local opts = vim.deepcopy(center_list)
-  opts.prompt_prefix = 'Nvim > '
+  opts.prompt_prefix = 'Nvim ❯ '
   opts.cwd = vim.fn.stdpath("config")
   require'telescope.builtin'.fd(opts)
 end
@@ -32,13 +32,13 @@ end
 -- Find files with_preview settings
 function fd()
   local opts = vim.deepcopy(with_preview)
-  opts.prompt_prefix = 'FD > '
+  opts.prompt_prefix = 'FD ❯ '
   require'telescope.builtin'.fd(opts)
 end
 
 finders.fd_in_snippets = function ()
     local opts = vim.deepcopy(center_list)
-    opts.prompt_prefix = 'Snippets > '
+    opts.prompt_prefix = 'Snippets ❯ '
     opts.cwd = '/home/manzood/Coding/Competitive-Programming/Snippets'
     require'telescope.builtin'.fd(opts)
 end

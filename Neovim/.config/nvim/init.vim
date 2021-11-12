@@ -1,4 +1,5 @@
 " to be considered later
+" TODO: Jetbrains mono might be a better font? Check it out later
 
 " nnoremap cn *``cgn
 " nnoremap cN *``cgN
@@ -388,5 +389,14 @@ nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
 
 
 " transparent background, uncomment to make background transparent
-" hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=none ctermbg=none
+" hi LineNr guibg=none ctermbg=none
+" hi Folded guibg=none ctermbg=none
+" hi NonText guibg=none ctermbg=none
+" hi SpecialKey guibg=none ctermbg=none
+" hi VertSplit guibg=none ctermbg=none
+" hi SignColumn guibg=none ctermbg=none
+" hi EndOfBuffer guibg=none ctermbg=none
+" hi NormalFloat guibg=none ctermbg=none
+" hi Pmenu guibg=none ctermbg=none
 
