@@ -26,9 +26,10 @@ window:
   # Number of lines/columns (not pixels) in the terminal. The number of columns
   # must be at least `2`, while using a value of `0` for columns and lines will
   # fall back to the window manager's recommended size.
+  # My config: Used to be 100 by 40
   dimensions:
-    columns: 100
-    lines: 30
+    columns: 90
+    lines: 32
 
   # Window position (changes require restart)
   #
@@ -43,8 +44,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 6
+    x: 11
+    y: 9
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -58,7 +59,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -156,7 +157,7 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
    x: 0
-   y: 2
+   y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,

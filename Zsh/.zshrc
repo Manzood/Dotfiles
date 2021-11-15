@@ -134,6 +134,7 @@ fi
 
 alias makeprobs='bash ~/Scripts/makeprobs.sh'
 alias makecontest='bash ~/Scripts/makecontest.sh'
+alias makeclangsetup='bash ~/Scripts/makeclangsetup.sh'
 
 [[ -s /home/manzood/.autojump/etc/profile.d/autojump.sh ]] && source /home/manzood/.autojump/etc/profile.d/autojump.sh
 

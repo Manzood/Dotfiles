@@ -23,6 +23,8 @@ let mapleader = " "
 " :cmap kj <Esc>
 :imap JK <Esc>
 :cmap JK <Esc>
+:imap Jk <Esc>
+:cmap Jk <Esc>
 
 " ---------------------------- vim-plug section -------------------------------
 " Plug was installed from https://github.com/junegunn/vim-plug
@@ -30,8 +32,6 @@ let mapleader = " "
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-sensible'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'ycm-core/YouCompleteMe'
 Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -47,7 +47,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+
+" Plug 'lukas-reineke/indent-blankline.nvim' " appears to have terrible performance honestly
+Plug 'akinsho/bufferline.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -248,7 +250,7 @@ nnoremap <M-h> :vertical resize +2<cr>
 nnoremap <M-l> :vertical resize -2<cr>
 nnoremap <M-j> :resize -2<cr>
 nnoremap <M-k> :resize +2<cr>
-nnoremap <leader>gd :YcmCompleter GoTo<cr>
+" nnoremap <leader>gd :YcmCompleter GoTo<cr>
 nnoremap <leader>o :!alacritty<cr>
 nnoremap <leader>c :e ~/Dotfiles/Neovim/.config/nvim/init.vim<cr>
 nnoremap <leader>Q :q!<cr>
@@ -354,6 +356,7 @@ lua require ('lsp-and-cmp')
 lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')
+" lua require ('my-nvim-tree')
 
 " ------------------------------------------------ nvim-cmp --------------------------------------------------------
 
@@ -377,15 +380,8 @@ nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<cr>
 nnoremap <leader>c <cmd>lua require('finders').fd_in_nvim()<cr>
 nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
 
-" highlight LspDiagnosticsDefaultError ctermfg=LightBlue cterm=Italic
 
-" highlight DiagnosticError guifg='#ff0000' guibg='#00ff00' gui='bold'
-
-" highlight LspDiagnosticsDefaultError guifg=BrightRed
-" highlight LspDiagnosticsDefaultWarning guifg=BrightYellow
-" highlight LspReferenceText cterm=bold guibg=LightYellow
-" highlight LspReferenceRead cterm=bold ctermbg=0 guibg=LightYellow
-" highlight LspReferenceWrite cterm=bold ctermbg=0 guibg=LightYellow
+" ------------------------------------------------ Transparency ------------------------------------------------------
 
 
 " transparent background, uncomment to make background transparent
@@ -399,4 +395,29 @@ nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
 " hi EndOfBuffer guibg=none ctermbg=none
 " hi NormalFloat guibg=none ctermbg=none
 " hi Pmenu guibg=none ctermbg=none
+
+
+" ---------------------------------------------- Activating Bufferline -------------------------------------------------
+
+lua << EOF
+require("bufferline").setup{}
+EOF
+
+" These commands will navigate through buffers in order regardless of which mode you are using
+" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>]b :BufferLineCyclePrev<CR>
+
+" These commands will move the current buffer backwards or forwards in the bufferline
+nnoremap <silent>[B :BufferLineMoveNext<CR>
+nnoremap <silent>]B :BufferLineMovePrev<CR>
+
+" These commands will sort buffers by directory, language, or a custom criteria
+" nnoremap <silent>be :BufferLineSortByExtension<CR>
+" nnoremap <silent>bd :BufferLineSortByDirectory<CR>
+
+" Making monokai pro better
+hi LineNr ctermfg=246 ctermbg=59 cterm=NONE guifg=#959394 guibg=NONE gui=NONE
+
+nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 

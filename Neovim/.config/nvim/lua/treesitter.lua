@@ -19,4 +19,3 @@ treesitter.setup {
     --indent = { enable = true },
 }
 
-
