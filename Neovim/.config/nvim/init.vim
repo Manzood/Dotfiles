@@ -80,6 +80,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'mangeshrex/uwu.vim'
 
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
