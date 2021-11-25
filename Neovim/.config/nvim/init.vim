@@ -31,6 +31,9 @@ let mapleader = " "
 
 call plug#begin('~/.config/nvim/plugged')
 
+" getting the dashboard
+Plug 'glepnir/dashboard-nvim'
+
 Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'ycm-core/YouCompleteMe'
@@ -357,6 +360,7 @@ lua require ('lsp-and-cmp')
 lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')
+lua require ('my-dashboard')
 " lua require ('my-nvim-tree')
 
 " ------------------------------------------------ nvim-cmp --------------------------------------------------------
@@ -421,4 +425,7 @@ nnoremap <silent>]B :BufferLineMovePrev<CR>
 hi LineNr ctermfg=246 ctermbg=59 cterm=NONE guifg=#959394 guibg=NONE gui=NONE
 
 nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+
+" let g:markdown_folding = 1
+
 
