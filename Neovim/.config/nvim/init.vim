@@ -1,6 +1,4 @@
 " to be considered later
-" TODO: Jetbrains mono might be a better font? Check it out later
-
 " nnoremap cn *``cgn
 " nnoremap cN *``cgN
 
