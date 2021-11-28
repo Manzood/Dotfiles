@@ -5,11 +5,13 @@ My current set of Dotfiles.
 This repository contains my Neovim, Alacritty and Sublime-Text config. <br>
 I will probably update this to have an install script in the future, to be able to switch my workflow around whenever necessary.
 
+<br>
 
 Neovim: <br>
 I currently use Neovim v0.5, and I've replaced my old YouCompleteMe config with the built-in LSP config. <br>
 I have not set up tree-sitter so far, but I hope to do so with the release of v0.6.
 
+<br>
 
 Sublime Text: <br>
 Vintage mode has been disabled. <br>
