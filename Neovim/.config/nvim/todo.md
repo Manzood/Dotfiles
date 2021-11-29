@@ -1,4 +1,5 @@
 # Upcoming things to work on
+- Set up onedarkpro, properly. If set up correctly, it might be by new colosrcheme of choice
 - Fix lspsasga hover\_doc:
     - Switch to other fork, or fix it yourself in your own fork and then forget about it
 - Get a good indentline plugin
