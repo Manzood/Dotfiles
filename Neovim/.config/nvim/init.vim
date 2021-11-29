@@ -133,11 +133,11 @@ set inccommand=nosplit
 set pumblend=20
 let g:python3_host_prog = '/usr/bin/python3'
 
-augroup vimrc
-  autocmd!
-  au BufReadPre * setlocal foldmethod=syntax
-  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
-augroup END
+" augroup vimrc
+  " autocmd!
+  " au BufReadPre * setlocal foldmethod=syntax
+  " au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+" augroup END
 
 " Adds the ability to leave files without saving, HUGE timesaver for FZF
 autocmd BufEnter * silent! lcd %:p:h

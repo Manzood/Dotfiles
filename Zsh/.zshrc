@@ -10,6 +10,7 @@ export ZSH="/home/manzood/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="bureau"
+# ZSH_THEME="" # previously used robbyrussell
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -69,6 +70,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 plugins=(vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
@@ -172,3 +174,4 @@ alias cmake='~/Applications/cmake-3.21.3-linux-x86_64/bin/cmake'
 alias luamake=/home/manzood/Downloads/Temp/LuaLSP/lua-language-server/3rd/luamake/luamake
 
 zmodload zsh/zprof
+
