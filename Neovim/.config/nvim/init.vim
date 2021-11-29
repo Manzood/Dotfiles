@@ -68,6 +68,7 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
+
 " Colorschemes:
 " Plug 'romgrk/doom-one.vim'
 " Plug 'patstockwell/vim-monokai-tasty'
@@ -82,6 +83,8 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'mangeshrex/uwu.vim'
+Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly,eventually
+
 
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
