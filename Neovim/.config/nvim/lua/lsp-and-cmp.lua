@@ -253,7 +253,7 @@ require'lspconfig'.sumneko_lua.setup {
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
 for type, icon in pairs(signs) do
-  local hl = "LspDiagnosticsSign" .. type
+  local hl = "DiagnosticSign" .. type -- Changed this from LspDiagnosticSigns to DiagnosticSign, upon switching to 0.6
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 

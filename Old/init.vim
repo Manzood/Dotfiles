@@ -1,4 +1,6 @@
 " -------------------------------Notes and tips-----------------------------
+" NOTE: This init.vim was what I used before switching to neovim 0.5+, using LSP and treesitter. I think the current setup is far superior, but I'm storing this as reference.
+
 " The original dotfile is located at ~/.config/nvim/init.vim
 " This is actually not the first file nvim looks at, but I've set up my init.vim to source this file
 

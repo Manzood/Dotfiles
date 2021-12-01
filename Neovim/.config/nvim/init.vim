@@ -39,7 +39,7 @@ Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 " Plug 'octol/vim-cpp-enhanced-highlight' " Disabled it for now, but it'll probably be useful at some point anyway? It seems to work better with monokai pro
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 " Plug 'vimwiki/vimwiki'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -174,7 +174,7 @@ augroup END
 
 "----------------------------------Plugin Config---------------------------------------
 " -- rainbow config --
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+" let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 " -- auto pairs --
 " the line below fixes the multiline issue, really
