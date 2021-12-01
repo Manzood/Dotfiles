@@ -38,7 +38,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
-Plug 'octol/vim-cpp-enhanced-highlight' " Might not even be necessary with treesitter?
+" Plug 'octol/vim-cpp-enhanced-highlight' " Disabled it for now, but it'll probably be useful at some point anyway? It seems to work better with monokai pro
 Plug 'luochen1990/rainbow'
 " Plug 'vimwiki/vimwiki'
 Plug 'nvim-lua/popup.nvim'
@@ -357,7 +357,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 lua require ('eviline')
 lua require ('lsp-and-cmp')
-" lua require ('treesitter')
+lua require ('treesitter')
 lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')
@@ -428,5 +428,4 @@ hi LineNr ctermfg=246 ctermbg=59 cterm=NONE guifg=#959394 guibg=NONE gui=NONE
 nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 
 " let g:markdown_folding = 1
-
 
