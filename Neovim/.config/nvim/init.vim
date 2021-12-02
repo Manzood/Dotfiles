@@ -121,7 +121,7 @@ set ruler
 set nowrap
 set mouse=a
 set number
-set hidden
+" set hidden " Since 0.6 and above, it's on by default
 set incsearch
 set nohlsearch
 set splitright splitbelow
