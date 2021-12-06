@@ -36,7 +36,9 @@ Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'ycm-core/YouCompleteMe'
 Plug 'https://github.com/neovim/nvim-lspconfig'
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdcommenter' " Getting rid of nerdcommenter for a bit
+Plug 'numToStr/Comment.nvim'
+" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'preservim/nerdtree'
 " Plug 'octol/vim-cpp-enhanced-highlight' " Disabled it for now, but it'll probably be useful at some point anyway? It seems to work better with monokai pro
 " Plug 'luochen1990/rainbow'
@@ -191,8 +193,8 @@ let g:AutoPairsMultilineClose = 0
 " endif
 
 " -- NERDCommentary --
-let g:NERDSpaceDelims=1
-let NERDCreateDefaultMappings=0 "Set it to 1 to re-enable the default mappings
+" let g:NERDSpaceDelims=1
+" let NERDCreateDefaultMappings=0 "Set it to 1 to re-enable the default mappings
 
 " -- NERDtree --
 " closes NERDtree if it is the only window left open
@@ -266,7 +268,7 @@ nnoremap <leader>t :split <bar> resize 16 <bar> :term<cr>a
 nnoremap <leader>s :e ~/Coding/Competitive-Programming/Snippets/
 
 " commentary remaps
-map <C-_> <plug>NERDCommenterInvert
+" map <C-_> <plug>NERDCommenterInvert
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 " vimwiki
@@ -355,20 +357,22 @@ let g:UltiSnipsJumpBackwardTrigger="c-x"
 let g:UltiSnipsEditSplit="vertical"
 
 
+" --------------------------------------- Sourcing my Lua files -----------------------------------------------
+
 lua require ('eviline')
 lua require ('lsp-and-cmp')
-lua require ('treesitter')
+lua require ('mytreesitter')
 lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')
 lua require ('my-dashboard')
+lua require ('my-comment')
 " lua require ('my-nvim-tree')
 
-" ------------------------------------------------ nvim-cmp --------------------------------------------------------
+
+" --------------------------------------------- nvim-cmp --------------------------------------------------------
 
 set completeopt=menu,menuone,noselect
-
-
 
 
 " ---------------------------------------- Telescope keybinds ------------------------------------------------------------------------------
