@@ -253,10 +253,10 @@ nnoremap <C-h> :wincmd h<cr>
 nnoremap <C-l> :wincmd l<cr>
 nnoremap <C-j> :wincmd j<cr>
 nnoremap <C-k> :wincmd k<cr>
-nnoremap <M-h> :vertical resize +2<cr>
-nnoremap <M-l> :vertical resize -2<cr>
-nnoremap <M-j> :resize -2<cr>
-nnoremap <M-k> :resize +2<cr>
+nnoremap <M-h> :vertical resize -2<cr>
+nnoremap <M-l> :vertical resize +2<cr>
+nnoremap <M-j> :resize +2<cr>
+nnoremap <M-k> :resize -2<cr>
 " nnoremap <leader>gd :YcmCompleter GoTo<cr>
 nnoremap <leader>o :!alacritty<cr>
 nnoremap <leader>c :e ~/Dotfiles/Neovim/.config/nvim/init.vim<cr>
