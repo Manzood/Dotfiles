@@ -1,4 +1,5 @@
 # Upcoming things to work on
+- Add dashboard logo
 - Change the background of barbar.nvim for monokai pro
 - Set up onedarkpro, properly. If set up correctly, it might be by new colosrcheme of choice
 - Fix lspsasga hover\_doc:

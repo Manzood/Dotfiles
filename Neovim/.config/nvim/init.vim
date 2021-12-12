@@ -70,6 +70,8 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
+Plug 'nvim-orgmode/orgmode'
+
 
 " Colorschemes:
 " Plug 'romgrk/doom-one.vim'
@@ -361,7 +363,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 lua require ('eviline')
 lua require ('lsp-and-cmp')
-lua require ('mytreesitter')
+lua require ('treesitter-and-orgmode')
 lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')

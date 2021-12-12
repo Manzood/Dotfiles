@@ -135,6 +135,7 @@ cmp.setup({
         -- { name = 'snippy' }, -- For snippy users.
     }, {
         { name = 'buffer', keyword_length = 5 },
+        { name = 'orgmode' }, -- adding nvim-orgmode
         -- { max_item_count = 10 }, -- did not work, for some reason
     }),
     experimental = {
