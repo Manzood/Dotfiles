@@ -280,6 +280,7 @@ nmap <C-t> <C-Space>
 autocmd filetype cpp map <C-B> :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype cpp map <C-Q> :wall <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
 autocmd filetype cpp nnoremap <leader>r :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <cr>
+autocmd filetype python nnoremap <leader>r :wall <bar> !python3 % < in <cr>
 autocmd filetype cpp nnoremap <leader>n :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
 autocmd filetype c map <C-B> :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype c nnoremap <leader>n :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>

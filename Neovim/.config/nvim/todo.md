@@ -1,4 +1,5 @@
 # Upcoming things to work on
+- Switch back to vimwiki? It seemed to work, if set up properly
 - Add dashboard logo
 - Change the background of barbar.nvim for monokai pro
 - Set up onedarkpro, properly. If set up correctly, it might be by new colosrcheme of choice
