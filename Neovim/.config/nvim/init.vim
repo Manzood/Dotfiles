@@ -70,7 +70,8 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
-Plug 'nvim-orgmode/orgmode'
+" Plug 'nvim-orgmode/orgmode'
+Plug 'nvim-neorg/neorg'
 
 
 " Colorschemes:
@@ -260,9 +261,9 @@ nnoremap <M-l> :vertical resize +2<cr>
 nnoremap <M-j> :resize +2<cr>
 nnoremap <M-k> :resize -2<cr>
 " nnoremap <leader>gd :YcmCompleter GoTo<cr>
-nnoremap <leader>o :!alacritty<cr>
-nnoremap <leader>c :e ~/Dotfiles/Neovim/.config/nvim/init.vim<cr>
-nnoremap <leader>Q :q!<cr>
+" nnoremap <leader>o :!alacritty<cr> " This is an ancient key-bind of mine that I wanted to use to mimic sublime text, but haven't used since
+" nnoremap <leader>c :e ~/Dotfiles/Neovim/.config/nvim/init.vim<cr>
+" nnoremap <leader>Q :q!<cr>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 tnoremap <C-\> <C-\><C-n>
@@ -363,12 +364,13 @@ let g:UltiSnipsEditSplit="vertical"
 
 lua require ('eviline')
 lua require ('lsp-and-cmp')
-lua require ('treesitter-and-orgmode')
+lua require ('treesitter-config')
 lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')
 lua require ('my-dashboard')
 lua require ('my-comment')
+lua require ('neorg-config')
 " lua require ('my-nvim-tree')
 
 
