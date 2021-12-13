@@ -1,3 +1,5 @@
+-- Currently unused, but I want to set this up at some point
+
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require'nvim-tree'.setup {

@@ -50,6 +50,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'SirVer/ultisnips'
+Plug 'karb94/neoscroll.nvim'
 
 " Plug 'lukas-reineke/indent-blankline.nvim' " appears to have terrible performance honestly
 Plug 'akinsho/bufferline.nvim'
@@ -372,6 +373,7 @@ lua require ('finders')
 lua require ('my-dashboard')
 lua require ('my-comment')
 lua require ('neorg-config')
+lua require ('neoscroll-config')
 " lua require ('my-nvim-tree')
 
 

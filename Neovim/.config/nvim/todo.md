@@ -1,4 +1,6 @@
 # Upcoming things to work on
+- Add defaults to comment.nvim. Also make sure that the gcA works as expected, because it does not, at the moment.
+- Set up nvim which-key? Maybe add a keybind that activates and deactivates it when I'm confused
 - Switch back to vimwiki? It seemed to work, if set up properly
 - Add dashboard logo
 - Change the background of barbar.nvim for monokai pro
