@@ -53,6 +53,7 @@ Plug 'SirVer/ultisnips'
 Plug 'karb94/neoscroll.nvim'
 
 " Plug 'lukas-reineke/indent-blankline.nvim' " appears to have terrible performance honestly
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'akinsho/bufferline.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -374,6 +375,7 @@ lua require ('my-dashboard')
 lua require ('my-comment')
 lua require ('neorg-config')
 lua require ('neoscroll-config')
+lua require ('indent-blankline-config')
 " lua require ('my-nvim-tree')
 
 
