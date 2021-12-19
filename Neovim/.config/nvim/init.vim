@@ -113,7 +113,7 @@ runtime! plugin/sensible.vim
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines
 set noerrorbells
 " Changing the timeout, i.e. the amount of time vim waits for a mapped key
-set timeoutlen=200
+set timeoutlen=300
 " indentation
 set tabstop=4
 set softtabstop=4
