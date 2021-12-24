@@ -1,4 +1,3 @@
-
 -- local previewers = require('telescope.previewers')
 -- local Job = require('plenary.job')
 
@@ -32,6 +31,9 @@ local with_preview_2 = {
     -- borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
 }
 
+require('telescope').load_extension('fzf')
+-- require('telescope').load_extension('media_files')
+
 local actions = require('telescope.actions')
 
 require('telescope').setup{
@@ -51,12 +53,15 @@ require('telescope').setup{
             fzy_native = {
                 override_generic_sorter = true,
                 override_file_sorter = true,
-            }
+            },
+            -- media_files = {
+            --     filetypes = {"png", "webp", "jpg", "jpeg"},
+            --     file_cmd = "rg" -- find command (defaults to `fd`)
+            -- },
         },
     }
 }
 
-require('telescope').load_extension('fzf')
 
 local M = {}
 

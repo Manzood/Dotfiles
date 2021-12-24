@@ -48,4 +48,3 @@ return finders
 -- make sure to map it:
 -- nnoremap <leader>ff :lua require'finders'.fd_in_nvim()<cr>
 -- nnoremap <leader>ff :lua require'finders'.fd()<cr>
-

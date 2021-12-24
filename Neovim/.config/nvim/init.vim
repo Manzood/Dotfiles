@@ -47,6 +47,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'SirVer/ultisnips'
@@ -88,9 +89,10 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chriskempson/base16-vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'Mofiqul/vscode.nvim'
-Plug 'mangeshrex/uwu.vim'
+" Plug 'Mofiqul/vscode.nvim'
+" Plug 'mangeshrex/uwu.vim'
 Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly,eventually
+Plug 'lunarvim/colorschemes'
 
 
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
@@ -146,6 +148,12 @@ let g:python3_host_prog = '/usr/bin/python3'
   " au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 " augroup END
 
+" augroup lsp_document_highlight
+"     autocmd! * <buffer>
+"     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+"     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+" augroup END
+
 " Adds the ability to leave files without saving, HUGE timesaver for FZF
 autocmd BufEnter * silent! lcd %:p:h
 " adding relative line numbers in Normal mode, but not in insert mode
@@ -163,7 +171,7 @@ if has("autocmd")
   \ endif
 endif
 
-augroup highlight_yankk
+augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
@@ -302,7 +310,7 @@ set termguicolors
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
 " autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
-colorscheme monokai_pro
+colorscheme darkplus
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
@@ -368,7 +376,7 @@ let g:UltiSnipsEditSplit="vertical"
 lua require ('eviline')
 lua require ('lsp-and-cmp')
 lua require ('treesitter-config')
-lua require ('mylspsaga')
+" lua require ('mylspsaga')
 lua require ('telescope-config')
 lua require ('finders')
 lua require ('my-dashboard')
