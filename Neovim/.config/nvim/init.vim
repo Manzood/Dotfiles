@@ -310,7 +310,7 @@ set termguicolors
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
 " autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
-colorscheme darkplus
+colorscheme monokai_pro
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
