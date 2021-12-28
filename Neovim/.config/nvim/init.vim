@@ -93,6 +93,7 @@ Plug 'phanviet/vim-monokai-pro'
 " Plug 'mangeshrex/uwu.vim'
 Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly,eventually
 Plug 'lunarvim/colorschemes'
+Plug 'rebelot/kanagawa.nvim'
 
 
 " Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
@@ -311,6 +312,7 @@ set termguicolors
 " autocmd vimenter * colorscheme my-base16-monokai
 " autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
 colorscheme monokai_pro
+" lua vim.g.tokyonight_style = "night"
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
