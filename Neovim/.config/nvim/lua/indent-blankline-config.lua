@@ -4,7 +4,7 @@
 
 require("indent_blankline").setup {
     show_end_of_line = true,
-    filetype_exclude = { "dashboard" },
+    filetype_exclude = { "dashboard", "" },
     -- show_current_context = true,
     -- show_current_context_start = true,
 }

@@ -141,6 +141,8 @@ set scrolloff=5
 set signcolumn=no " toggle the signcolumn to yes for YouCompleteMe
 set inccommand=nosplit
 set pumblend=20
+set noswapfile
+set updatetime=250
 let g:python3_host_prog = '/usr/bin/python3'
 
 " augroup vimrc
@@ -158,10 +160,32 @@ let g:python3_host_prog = '/usr/bin/python3'
 " Adds the ability to leave files without saving, HUGE timesaver for FZF
 autocmd BufEnter * silent! lcd %:p:h
 " adding relative line numbers in Normal mode, but not in insert mode
+
+" This was my old numbertoggle. However, I want to disable it for certain filetypes
+" augroup numbertoggle
+"     autocmd!
+"     autocmd BufEnter,FocusGained,InsertLeave * set rnu
+"     autocmd BufLeave,FocusLost,InsertEnter * set nornu
+" augroup END
+
+fun! Setrnu()
+    if &ft =~ 'dashboard' " add more filetypes with a '\|' as a separation
+        return
+    endif
+    set rnu
+endfun
+
+fun! Setnornu()
+    if &ft =~ 'dashboard'
+        return
+    endif
+    set nornu
+endfun
+
 augroup numbertoggle
     autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set rnu
-    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+    autocmd BufEnter,FocusGained,InsertLeave * call Setrnu()
+    autocmd BufLeave,FocusLost,InsertEnter * call Setnornu()
 augroup END
 
 if has("autocmd")
@@ -311,7 +335,7 @@ set termguicolors
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
 " autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
-colorscheme monokai_pro
+colorscheme darkplus
 " lua vim.g.tokyonight_style = "night"
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai

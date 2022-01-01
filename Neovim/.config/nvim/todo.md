@@ -1,4 +1,6 @@
 # Upcoming things to work on
+- Switch out nerdtree with nvim-tree
+- Either remove plugins installed with packer, or switch to packer completely
 - Possibly add a telescope function + key-bind that searches home directory?
 - Add defaults to comment.nvim. Also make sure that the gcA works as expected, because it does not, at the moment.
 - Set up nvim which-key? Maybe add a keybind that activates and deactivates it for usage only when I'm confused
