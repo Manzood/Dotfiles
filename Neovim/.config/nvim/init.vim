@@ -38,7 +38,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'https://github.com/neovim/nvim-lspconfig'
 " Plug 'preservim/nerdcommenter' " Getting rid of nerdcommenter for a bit
 Plug 'numToStr/Comment.nvim'
-" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 " Plug 'preservim/nerdtree'
 " Plug 'octol/vim-cpp-enhanced-highlight' " Disabled it for now, but it'll probably be useful at some point anyway? It seems to work better with monokai pro
 " Plug 'luochen1990/rainbow'
@@ -53,11 +53,11 @@ Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'SirVer/ultisnips'
 Plug 'karb94/neoscroll.nvim'
-
-" Plug 'lukas-reineke/indent-blankline.nvim' " appears to have terrible performance honestly
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'akinsho/bufferline.nvim'
 
+" nvim-cmp stuff
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
@@ -408,11 +408,12 @@ lua require ('treesitter-config')
 lua require ('telescope-config')
 lua require ('finders')
 lua require ('my-dashboard')
-lua require ('my-comment')
+lua require ('comment-config')
 lua require ('neorg-config')
 lua require ('neoscroll-config')
 lua require ('indent-blankline-config')
 lua require ('nvim-tree-config')
+lua require ('gitsigns-config')
 
 
 " --------------------------------------------- nvim-cmp --------------------------------------------------------

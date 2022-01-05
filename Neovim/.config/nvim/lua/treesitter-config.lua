@@ -36,8 +36,6 @@ parser_configs.norg = {
     },
 }
 
-
-
 treesitter.setup {
     ensure_installed = 'maintained',
     highlight = {
@@ -51,9 +49,10 @@ treesitter.setup {
         enable = true,
         disable = { 'cpp' },
     },
-    -- context_commentstring = {
-    --     enable = true,
-    -- },
+    context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+    },
     incremental_selection = {
       enable = true,
       keymaps = {
