@@ -39,7 +39,7 @@ Plug 'https://github.com/neovim/nvim-lspconfig'
 " Plug 'preservim/nerdcommenter' " Getting rid of nerdcommenter for a bit
 Plug 'numToStr/Comment.nvim'
 " Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 " Plug 'octol/vim-cpp-enhanced-highlight' " Disabled it for now, but it'll probably be useful at some point anyway? It seems to work better with monokai pro
 " Plug 'luochen1990/rainbow'
 " Plug 'vimwiki/vimwiki'
@@ -50,6 +50,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'SirVer/ultisnips'
 Plug 'karb94/neoscroll.nvim'
 
@@ -87,7 +88,8 @@ Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'sickill/vim-monokai'
 Plug 'chriskempson/base16-vim'
-Plug 'ghifarit53/tokyonight-vim'
+" Plug 'ghifarit53/tokyonight-vim'
+Plug 'folke/tokyonight.nvim'
 Plug 'phanviet/vim-monokai-pro'
 " Plug 'Mofiqul/vscode.nvim'
 " Plug 'mangeshrex/uwu.vim'
@@ -169,14 +171,14 @@ autocmd BufEnter * silent! lcd %:p:h
 " augroup END
 
 fun! Setrnu()
-    if &ft =~ 'dashboard' " add more filetypes with a '\|' as a separation
+    if &ft =~ 'dashboard\|NvimTree' " add more filetypes with a '\|' as a separation
         return
     endif
     set rnu
 endfun
 
 fun! Setnornu()
-    if &ft =~ 'dashboard'
+    if &ft =~ 'dashboard\|NvimTree'
         return
     endif
     set nornu
@@ -236,8 +238,8 @@ let g:AutoPairsMultilineClose = 0
 
 " -- NERDtree --
 " closes NERDtree if it is the only window left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeShowHidden=1
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" let NERDTreeShowHidden=1
 
 "-- VimWiki --
 
@@ -308,9 +310,9 @@ nnoremap <leader>s :e ~/Coding/Competitive-Programming/Snippets/
 " commentary remaps
 " map <C-_> <plug>NERDCommenterInvert
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 " vimwiki
-nmap <C-t> <C-Space>
+" nmap <C-t> <C-Space>
 
 autocmd filetype cpp map <C-B> :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype cpp map <C-Q> :wall <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
@@ -336,7 +338,7 @@ set termguicolors
 " autocmd vimenter * colorscheme my-base16-monokai
 " autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
 colorscheme darkplus
-" lua vim.g.tokyonight_style = "night"
+lua vim.g.tokyonight_style = "night"
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
@@ -410,7 +412,7 @@ lua require ('my-comment')
 lua require ('neorg-config')
 lua require ('neoscroll-config')
 lua require ('indent-blankline-config')
-" lua require ('my-nvim-tree')
+lua require ('nvim-tree-config')
 
 
 " --------------------------------------------- nvim-cmp --------------------------------------------------------
