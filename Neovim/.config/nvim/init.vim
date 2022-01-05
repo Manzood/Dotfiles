@@ -414,6 +414,7 @@ lua require ('neoscroll-config')
 lua require ('indent-blankline-config')
 lua require ('nvim-tree-config')
 lua require ('gitsigns-config')
+lua require ('bufferline-config')
 
 
 " --------------------------------------------- nvim-cmp --------------------------------------------------------
@@ -422,7 +423,7 @@ set completeopt=menu,menuone,noselect
 
 
 " ---------------------------------------- Telescope keybinds ------------------------------------------------------------------------------
-" This section has to go after telescope config is sourced
+" This section has to go AFTER telescope config is sourced
 
 " Using lua functions
 nnoremap <leader>ff <cmd>lua require('telescope-config').project_files()<cr>
@@ -439,7 +440,6 @@ nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
 
 " ------------------------------------------------ Transparency ------------------------------------------------------
 
-
 " transparent background, uncomment to make background transparent
 " hi Normal guibg=none ctermbg=none
 " hi LineNr guibg=none ctermbg=none
@@ -453,27 +453,9 @@ nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
 " hi Pmenu guibg=none ctermbg=none
 
 
-" ---------------------------------------------- Activating Bufferline -------------------------------------------------
-
-lua << EOF
-require("bufferline").setup{}
-EOF
-
-" These commands will navigate through buffers in order regardless of which mode you are using
-" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-nnoremap <silent>[b :BufferLineCycleNext<CR>
-nnoremap <silent>]b :BufferLineCyclePrev<CR>
-
-" These commands will move the current buffer backwards or forwards in the bufferline
-nnoremap <silent>[B :BufferLineMoveNext<CR>
-nnoremap <silent>]B :BufferLineMovePrev<CR>
-
-" These commands will sort buffers by directory, language, or a custom criteria
-" nnoremap <silent>be :BufferLineSortByExtension<CR>
-" nnoremap <silent>bd :BufferLineSortByDirectory<CR>
 
 " Making monokai pro better
-hi LineNr ctermfg=246 ctermbg=59 cterm=NONE guifg=#959394 guibg=NONE gui=NONE
+" hi LineNr ctermfg=246 ctermbg=59 cterm=NONE guifg=#959394 guibg=NONE gui=NONE
 
 nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 

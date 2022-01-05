@@ -30,7 +30,7 @@ finders.fd_in_nvim = function()
 end
 
 -- Find files with_preview settings
-function fd()
+function Fd()
   local opts = vim.deepcopy(with_preview)
   opts.prompt_prefix = 'FD ❯ '
   require'telescope.builtin'.fd(opts)
