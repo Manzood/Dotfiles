@@ -21,55 +21,54 @@
 -- end
 
 local with_preview_2 = {
-    winblend = 10,
-    show_line = false,
-    results_title = false,
-    preview_title = false,
-    layout_config = {
-        preview_width = 0.5,
-    },
-    -- borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
+	winblend = 10,
+	show_line = false,
+	results_title = false,
+	preview_title = false,
+	layout_config = {
+		preview_width = 0.5,
+	},
+	-- borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
 }
 
-require('telescope').load_extension('fzf')
+require("telescope").load_extension("fzf")
 -- require('telescope').load_extension('media_files')
 
-local actions = require('telescope.actions')
+local actions = require("telescope.actions")
 
-require('telescope').setup{
-    defaults = {
-        winblend = 10,
-        prompt_prefix = "❯ ",
-        selection_caret = "❯ ",
-        mappings = {
-            n = {
-                ["q"] = actions.close
-            },
-            -- buffer_previewer_maker = new_maker,
-            -- borderchars        = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
-
-        },
-        extensions = {
-            fzy_native = {
-                override_generic_sorter = true,
-                override_file_sorter = true,
-            },
-            -- media_files = {
-            --     filetypes = {"png", "webp", "jpg", "jpeg"},
-            --     file_cmd = "rg" -- find command (defaults to `fd`)
-            -- },
-        },
-    }
-}
-
+require("telescope").setup({
+	defaults = {
+		winblend = 10,
+		prompt_prefix = "❯ ",
+		selection_caret = "❯ ",
+		mappings = {
+			n = {
+				["q"] = actions.close,
+			},
+			-- buffer_previewer_maker = new_maker,
+			-- borderchars        = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
+		},
+		extensions = {
+			fzy_native = {
+				override_generic_sorter = true,
+				override_file_sorter = true,
+			},
+			-- media_files = {
+			--     filetypes = {"png", "webp", "jpg", "jpeg"},
+			--     file_cmd = "rg" -- find command (defaults to `fd`)
+			-- },
+		},
+	},
+})
 
 local M = {}
 
 M.project_files = function()
-    local opts = vim.deepcopy(with_preview_2) -- define here if you want to define something
-    local ok = pcall(require'telescope.builtin'.git_files, opts)
-    if not ok then require'telescope.builtin'.find_files(opts) end
+	local opts = vim.deepcopy(with_preview_2) -- define here if you want to define something
+	local ok = pcall(require("telescope.builtin").git_files, opts)
+	if not ok then
+		require("telescope.builtin").find_files(opts)
+	end
 end
 
 return M
-

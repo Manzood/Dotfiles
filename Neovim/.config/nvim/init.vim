@@ -33,7 +33,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'glepnir/dashboard-nvim'
 
 Plug 'tpope/vim-sensible'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs' " This was my old auto-pairs plugin
+Plug 'windwp/nvim-autopairs'
 " Plug 'ycm-core/YouCompleteMe'
 Plug 'https://github.com/neovim/nvim-lspconfig'
 " Plug 'preservim/nerdcommenter' " Getting rid of nerdcommenter for a bit
@@ -69,6 +70,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'onsails/lspkind-nvim'
 " Plug 'folke/lsp-colors.nvim'
 Plug 'glepnir/lspsaga.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Getting Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -404,10 +406,10 @@ let g:UltiSnipsEditSplit="vertical"
 lua require ('eviline')
 lua require ('lsp-and-cmp')
 lua require ('treesitter-config')
-" lua require ('mylspsaga')
+" lua require ('lspsaga-config')
 lua require ('telescope-config')
 lua require ('finders')
-lua require ('my-dashboard')
+lua require ('dashboard-config')
 lua require ('comment-config')
 lua require ('neorg-config')
 lua require ('neoscroll-config')
@@ -415,7 +417,8 @@ lua require ('indent-blankline-config')
 lua require ('nvim-tree-config')
 lua require ('gitsigns-config')
 lua require ('bufferline-config')
-
+lua require ('nvim-autopairs-config')
+lua require ('null-ls-config')
 
 " --------------------------------------------- nvim-cmp --------------------------------------------------------
 

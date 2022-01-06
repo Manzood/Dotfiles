@@ -1,5 +1,4 @@
-
-local saga = require 'lspsaga'
+local saga = require("lspsaga")
 
 -- add your config value here
 -- default value
@@ -38,11 +37,11 @@ local saga = require 'lspsaga'
 -- server_filetype_map = {}
 
 saga.init_lsp_saga({
-    use_saga_diagnostic_sign = false,
-    border_style = "round",
+	use_saga_diagnostic_sign = false,
+	border_style = "round",
 })
 
-vim.cmd [[
+vim.cmd([[
     nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
     nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
     vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
@@ -58,5 +57,4 @@ vim.cmd [[
     nnoremap <silent> ]d <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
     nnoremap <silent> <A-d> <cmd>lua require('lspsaga.floaterm').open_float_terminal()<CR>
     tnoremap <silent> <A-d> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
-]]
-
+]])
