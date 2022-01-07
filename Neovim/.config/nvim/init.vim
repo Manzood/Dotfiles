@@ -81,26 +81,20 @@ Plug 'nvim-neorg/neorg'
 
 
 " Colorschemes:
-" Plug 'romgrk/doom-one.vim'
 " Plug 'patstockwell/vim-monokai-tasty'
 Plug 'overcache/NeoSolarized'
 Plug 'morhetz/gruvbox'
 " Plug 'joshdick/onedark.vim'
-" Plug 'reedes/vim-colors-pencil'
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'sickill/vim-monokai'
-Plug 'chriskempson/base16-vim'
-" Plug 'ghifarit53/tokyonight-vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'folke/tokyonight.nvim'
 Plug 'phanviet/vim-monokai-pro'
-" Plug 'Mofiqul/vscode.nvim'
 " Plug 'mangeshrex/uwu.vim'
 Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly,eventually
 Plug 'lunarvim/colorschemes'
 Plug 'rebelot/kanagawa.nvim'
 
 
-" Plug 'Mofiqul/codedark.nvim' , {'branch' : 'main'}
 " Plug 'tjdevries/colorbuddy.nvim'
 " Plug 'marko-cerovac/material.nvim', { 'branch': 'colorbuddy' }
 Plug 'marko-cerovac/material.nvim'
