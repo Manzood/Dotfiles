@@ -57,6 +57,7 @@ Plug 'karb94/neoscroll.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'akinsho/bufferline.nvim'
+Plug 'akinsho/toggleterm.nvim'
 
 " nvim-cmp stuff
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -413,6 +414,7 @@ lua require ('gitsigns-config')
 lua require ('bufferline-config')
 lua require ('nvim-autopairs-config')
 lua require ('null-ls-config')
+lua require ('toggleterm-config')
 
 " --------------------------------------------- nvim-cmp --------------------------------------------------------
 
