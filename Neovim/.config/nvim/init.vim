@@ -70,7 +70,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 "LSPKind and LSP-colors
 Plug 'onsails/lspkind-nvim'
 " Plug 'folke/lsp-colors.nvim'
-Plug 'glepnir/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Getting Treesitter
@@ -456,7 +456,7 @@ nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
 " Making monokai pro better
 " hi LineNr ctermfg=246 ctermbg=59 cterm=NONE guifg=#959394 guibg=NONE gui=NONE
 
-nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+" nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 
 " let g:markdown_folding = 1
 
