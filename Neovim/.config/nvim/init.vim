@@ -32,6 +32,9 @@ call plug#begin('~/.config/nvim/plugged')
 " getting the dashboard
 Plug 'glepnir/dashboard-nvim'
 
+" Getting the scrollbar
+Plug 'petertriho/nvim-scrollbar'
+
 Plug 'tpope/vim-sensible'
 " Plug 'jiangmiao/auto-pairs' " This was my old auto-pairs plugin
 Plug 'windwp/nvim-autopairs'
@@ -414,6 +417,7 @@ lua require ('bufferline-config')
 lua require ('nvim-autopairs-config')
 lua require ('null-ls-config')
 lua require ('toggleterm-config')
+" lua require ('scrollbar-config')
 
 " --------------------------------------------- nvim-cmp --------------------------------------------------------
 
