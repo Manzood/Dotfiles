@@ -82,18 +82,18 @@ Plug 'nvim-neorg/neorg'
 
 
 " Colorschemes:
-" Plug 'patstockwell/vim-monokai-tasty'
 Plug 'overcache/NeoSolarized'
 Plug 'morhetz/gruvbox'
 " Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'chriskempson/base16-vim'
 Plug 'folke/tokyonight.nvim'
-Plug 'phanviet/vim-monokai-pro'
+" Plug 'phanviet/vim-monokai-pro'
 " Plug 'mangeshrex/uwu.vim'
 Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly,eventually
 Plug 'lunarvim/colorschemes'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'tanvirtin/monokai.nvim'
 
 
 " Plug 'tjdevries/colorbuddy.nvim'
@@ -330,10 +330,9 @@ set termguicolors
 "let g:solarized_termcolors=256
 
 " ---Colorscheme setup---
-" colorscheme vim-monokai-tasty
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
-" autocmd vimenter * colorscheme monokai_pro      " monokai pro is so good
+" autocmd vimenter * colorscheme monokai_pro      " monokai pro was so good
 colorscheme darkplus
 lua vim.g.tokyonight_style = "night"
 " autocmd vimenter * AirlineTheme onedark

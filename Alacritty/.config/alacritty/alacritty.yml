@@ -875,35 +875,7 @@ schemes:
       white:   '#ffffff'
 
 
-  #Colors (Monokai Pro)
-  Monokai-Pro: &Monokai-Pro
-    # Default colors
-    primary:
-      background: '#2D2A2E'
-      foreground: '#FCFCFA'
-
-    # Normal colors
-    normal:
-      black:   '#403E41'
-      red:     '#FF6188'
-      green:   '#A9DC76'
-      yellow:  '#FFD866'
-      blue:    '#FC9867'
-      magenta: '#AB9DF2'
-      cyan:    '#78DCE8'
-      white:   '#FCFCFA'
-
-    # Bright colors
-    bright:
-      black:   '#727072'
-      red:     '#FF6188'
-      green:   '#A9DC76'
-      yellow:  '#FFD866'
-      blue:    '#FC9867'
-      magenta: '#AB9DF2'
-      cyan:    '#78DCE8'
-      white:   '#FCFCFA'
-
+  # dark plus from VS Code
   dark-plus: &dark-plus
     primary:
       background: '#1e1e1e' #Background from Dark Theme
@@ -1091,6 +1063,88 @@ schemes:
     indexed_colors:
       - { index: 16, color: '0xffa066' }
       - { index: 17, color: '0xff5d62' }
+
+
+  # Monokai
+  Monokai-Classic: &Monokai-Classic
+    primary:
+      background: '#272822'
+      foreground: '#F8F8F2'
+
+    normal:
+      black:   '#272822'
+      red:     '#F92672'
+      green:   '#A6E22E'
+      yellow:  '#F4BF75'
+      blue:    '#66D9EF'
+      magenta: '#AE81FF'
+      cyan:    '#A1EFE4'
+      white:   '#F8F8F2'
+
+    bright:
+      black:   '#75715E'
+      red:     '#F92672'
+      green:   '#A6E22E'
+      yellow:  '#F4BF75'
+      blue:    '#66D9EF'
+      magenta: '#AE81FF'
+      cyan:    '#A1EFE4'
+      white:   '#F9F8F5'
+
+  #Colors (Monokai Pro)
+  Monokai-Pro: &Monokai-Pro
+    # Default colors
+    primary:
+      background: '#2D2A2E'
+      foreground: '#FCFCFA'
+
+    # Normal colors
+    normal:
+      black:   '#403E41'
+      red:     '#FF6188'
+      green:   '#A9DC76'
+      yellow:  '#FFD866'
+      blue:    '#FC9867'
+      magenta: '#AB9DF2'
+      cyan:    '#78DCE8'
+      white:   '#FCFCFA'
+
+    # Bright colors
+    bright:
+      black:   '#727072'
+      red:     '#FF6188'
+      green:   '#A9DC76'
+      yellow:  '#FFD866'
+      blue:    '#FC9867'
+      magenta: '#AB9DF2'
+      cyan:    '#78DCE8'
+      white:   '#FCFCFA'
+
+  # Monokai_Soda
+  Monokai-Soda: &Monokai-Soda
+    primary:
+      background: '#1a1a1a'
+      foreground: '#c4c5b5'
+
+    normal:
+      black:   '#1a1a1a'
+      red:     '#f4005f'
+      green:   '#98e024'
+      yellow:  '#fa8419'
+      blue:    '#9d65ff'
+      magenta: '#f4005f'
+      cyan:    '#58d1eb'
+      white:   '#c4c5b5'
+
+    bright:
+      black:   '#625e4c'
+      red:     '#f4005f'
+      green:   '#98e024'
+      yellow:  '#e0d561'
+      blue:    '#9d65ff'
+      magenta: '#f4005f'
+      cyan:    '#58d1eb'
+      white:   '#f6f6ef'
 
 
 # this sets the colorscheme to whatever you've picked
