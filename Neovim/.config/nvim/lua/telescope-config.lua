@@ -31,6 +31,14 @@ local with_preview_2 = {
 	-- borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
 }
 
+local colorscheme_center_list = require("telescope.themes").get_dropdown({
+	winblend = 10,
+	width = 0.5,
+	prompt = " ❯ ",
+	results_height = 10,
+	previewer = false,
+})
+
 require("telescope").load_extension("fzf")
 -- require('telescope').load_extension('media_files')
 
@@ -68,6 +76,14 @@ M.project_files = function()
 	local ok = pcall(require("telescope.builtin").git_files, opts)
 	if not ok then
 		require("telescope.builtin").find_files(opts)
+	end
+end
+
+M.change_colorscheme = function()
+	local opts = vim.deepcopy(colorscheme_center_list) -- define here if you want to define something
+	local ok = pcall(require("telescope.builtin").colorscheme, opts)
+	if not ok then
+        print("Couldn't change colorscheme")
 	end
 end
 

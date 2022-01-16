@@ -433,11 +433,13 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>
-nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<cr>
+" nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<cr>
+nnoremap <leader>fc <cmd>lua require('telescope-config').change_colorscheme()<cr>
 " nnoremap <leader>s <cmd>cd ~/Coding/Competitive-Programming/Snippets <bar> lua require('telescope.builtin').find_files()<cr>
 " nnoremap <leader>c <cmd>cd ~/Dotfiles/Neovim/.config/nvim <bar> lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>c <cmd>lua require('finders').fd_in_nvim()<cr>
+nnoremap <leader>cc <cmd>lua require('finders').fd_in_nvim()<cr>
 nnoremap <leader>s <cmd>lua require('finders').fd_in_snippets()<cr>
+nnoremap <leader>cf <cmd>lua require('finders').contest()<cr>
 
 
 " ------------------------------------------------ Transparency ------------------------------------------------------

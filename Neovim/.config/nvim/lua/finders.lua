@@ -43,6 +43,13 @@ finders.fd_in_snippets = function()
 	require("telescope.builtin").fd(opts)
 end
 
+finders.contest = function()
+    local opts = vim.deepcopy(with_preview)
+    opts.prompt_prefix = "Contest ❯ "
+	opts.cwd = "../"
+    require("telescope.builtin").fd(opts);
+end
+
 return finders
 
 -- make sure to map it:
