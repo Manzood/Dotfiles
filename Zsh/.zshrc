@@ -177,5 +177,6 @@ alias luamake=/home/manzood/Downloads/Temp/LuaLSP/lua-language-server/3rd/luamak
 zmodload zsh/zprof
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Applications/Maven/apache-maven-3.8.4/bin:$PATH"
 
 

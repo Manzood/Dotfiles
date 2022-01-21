@@ -17,8 +17,8 @@ let mapleader = " "
 "mapping jk as escape
 :imap jk <Esc>
 :cmap jk <Esc>
-" :imap kj <Esc>
-" :cmap kj <Esc>
+:imap kj <Esc>
+:cmap kj <Esc>
 :imap JK <Esc>
 :cmap JK <Esc>
 :imap Jk <Esc>
