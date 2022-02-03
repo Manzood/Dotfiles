@@ -69,6 +69,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/cmp-calc'
 
 "LSPKind and LSP-colors
 Plug 'onsails/lspkind-nvim'
@@ -81,7 +82,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " Plug 'nvim-orgmode/orgmode'
-Plug 'nvim-neorg/neorg'
+" Plug 'nvim-neorg/neorg'
+
+"Java language server
+Plug 'mfussenegger/nvim-jdtls'
 
 
 " Colorschemes:
@@ -317,8 +321,8 @@ nnoremap <leader>s :e ~/Coding/Competitive-Programming/Snippets/
 autocmd filetype cpp map <C-B> :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype cpp map <C-Q> :wall <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
 autocmd filetype cpp nnoremap <leader>r :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <cr>
-autocmd filetype python nnoremap <leader>r :wall <bar> !python3 % < in <cr>
 autocmd filetype cpp nnoremap <leader>n :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
+autocmd filetype python nnoremap <leader>r :wall <bar> !python3 % < in <cr>
 autocmd filetype c map <C-B> :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype c nnoremap <leader>n :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
 
@@ -408,7 +412,7 @@ lua require ('telescope-config')
 lua require ('finders')
 lua require ('dashboard-config')
 lua require ('comment-config')
-lua require ('neorg-config')
+" lua require ('neorg-config')
 lua require ('neoscroll-config')
 lua require ('indent-blankline-config')
 lua require ('nvim-tree-config')
