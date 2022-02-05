@@ -179,4 +179,5 @@ zmodload zsh/zprof
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Applications/Maven/apache-maven-3.8.4/bin:$PATH"
 
+alias tmux='tmux -u'
 
