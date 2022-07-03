@@ -205,3 +205,7 @@ alias xgraph=/home/bart/XGraph/bin/xgraph
 source /home/manzood/Applications/alacritty/extra/completions/alacritty.bash
 . "$HOME/.cargo/env"
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -181,3 +181,7 @@ export PATH="$HOME/Applications/Maven/apache-maven-3.8.4/bin:$PATH"
 
 alias tmux='tmux -u'
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

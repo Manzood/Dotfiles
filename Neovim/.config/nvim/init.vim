@@ -61,6 +61,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'akinsho/toggleterm.nvim'
+Plug 'vimwiki/vimwiki'
 
 " nvim-cmp stuff
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -69,7 +70,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug 'hrsh7th/cmp-calc'
+" Plug 'hrsh7th/cmp-calc'
 
 "LSPKind and LSP-colors
 Plug 'onsails/lspkind-nvim'
@@ -119,6 +120,7 @@ runtime! plugin/sensible.vim
 
 " --------------------------general configuration---------------------------
 " set lazyredraw
+set nocompatible
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines
 set noerrorbells
 " Changing the timeout, i.e. the amount of time vim waits for a mapped key
@@ -247,6 +249,8 @@ let g:AutoPairsMultilineClose = 0
 
 "-- VimWiki --
 
+  let g:vimwiki_list = [{'path': '~/Notes/VimWiki', 'path_html': '~/Notes/VimWiki_html'}]
+
 " let g:vimwiki_list = [{'path':'~/VimWiki', 'syntax': 'markdown', 'ext': '.md'}]
 " let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " let g:vimwiki_markdown_link_ext = 1                   " Makes vimwiki markdown links as [text](text.md) instead of [text](text)
@@ -318,12 +322,12 @@ nnoremap <leader>s :e ~/Coding/Competitive-Programming/Snippets/
 " vimwiki
 " nmap <C-t> <C-Space>
 
-autocmd filetype cpp map <C-B> :wall <bar> !time g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>
+autocmd filetype cpp map <C-B> :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>
 autocmd filetype cpp map <C-Q> :wall <bar> !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>
 autocmd filetype cpp nnoremap <leader>r :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <cr>
 autocmd filetype cpp nnoremap <leader>n :wall <bar> !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
 autocmd filetype python nnoremap <leader>r :wall <bar> !python3 % < in <cr>
-autocmd filetype c map <C-B> :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
+autocmd filetype c map <C-B> :wall <bar> !gcc -g -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>
 autocmd filetype c nnoremap <leader>n :wall <bar> !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <cr>
 
 " Useful for future code templates
@@ -432,8 +436,8 @@ set completeopt=menu,menuone,noselect
 " This section has to go AFTER telescope config is sourced
 
 " Using lua functions
-nnoremap <leader>ff <cmd>lua require('telescope-config').project_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <C-p> <cmd>lua require('telescope-config').project_files()<cr>
+nnoremap <C-F> <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>
