@@ -119,6 +119,8 @@ runtime! plugin/sensible.vim
 
 
 " --------------------------general configuration---------------------------
+" configure format on save
+autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 " set lazyredraw
 set nocompatible
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines

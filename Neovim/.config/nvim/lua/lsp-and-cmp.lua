@@ -129,7 +129,7 @@ local on_attach = function(client, bufnr)
 	-- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 	-- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	buf_set_keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	lsp_highlight_document(client) -- works only with some colorschemes
 end
@@ -165,7 +165,7 @@ cmp.setup({
 		-- { name = 'snippy' }, -- For snippy users.
 	}, {
 		{ name = "buffer", keyword_length = 4 },
-        -- { name = "calc" },
+		-- { name = "calc" },
 		-- { name = "neorg" },
 		-- { name = 'orgmode' }, -- adding nvim-orgmode
 		-- { max_item_count = 10 }, -- did not work, for some reason
@@ -196,7 +196,7 @@ cmp.setup({
 -- Setup lspconfig.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { "pyright", "clangd", }
+local servers = { "pyright", "clangd" }
 -- require('lspconfig').pyright.setup {
 -- capabilities = capabilities
 -- }
@@ -272,7 +272,6 @@ require("lspconfig").sumneko_lua.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-
 
 -- Java
 
