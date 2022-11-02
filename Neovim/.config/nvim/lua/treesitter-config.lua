@@ -36,7 +36,7 @@ parser_configs.norg = {
 }
 
 treesitter.setup({
-	ensure_installed = "maintained",
+	ensure_installed = maintained,
 	highlight = {
 		enable = true,
 		-- disable = {'org'},

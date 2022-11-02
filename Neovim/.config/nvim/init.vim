@@ -98,10 +98,12 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'folke/tokyonight.nvim'
 " Plug 'phanviet/vim-monokai-pro'
 " Plug 'mangeshrex/uwu.vim'
-Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly,eventually
+Plug 'olimorris/onedarkpro.nvim' " This hasn't been set up properly yet. Set this up properly, eventually
 Plug 'lunarvim/colorschemes'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'tanvirtin/monokai.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 
 
 " Plug 'tjdevries/colorbuddy.nvim'
@@ -475,3 +477,9 @@ nnoremap <leader>cf <cmd>lua require('finders').contest()<cr>
 
 " let g:markdown_folding = 1
 
+lua << EOF
+require("catppuccin").setup {
+    flavour = "macchiato" -- mocha, macchiato, frappe, latte
+}
+EOF
+" colorscheme catppuccin
