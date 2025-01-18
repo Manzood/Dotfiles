@@ -20,6 +20,31 @@
 -- }):sync()
 -- end
 
+local telescope_ignore_patterns = {
+	--[[ "[^a-z]test[^a-z]", ]]
+	--[[ "[^a-z]mock[^a-z]", ]]
+	--[[ "[^a-z]stub[^a-z]", ]]
+	--[[ "Test[^a-z]", ]]
+	--[[ "Mock[^a-z]", ]]
+	--[[ "Stub[^a-z]", ]]
+	"%.bin",
+	"%.cmake",
+	"%.make",
+	"a.out",
+	"%.log",
+	"%.check_cache",
+	"%.marks",
+}
+
+vim.g.telescope_ignore_enabled = true
+vim.keymap.set("n", "<leader>uI", function()
+	vim.g.telescope_ignore_enabled = not vim.g.telescope_ignore_enabled
+
+	require("telescope.config").set_defaults({
+		file_ignore_patterns = vim.g.telescope_ignore_enabled and telescope_ignore_patterns or {},
+	})
+end, { noremap = true, desc = "Toggle telescope ignore patterns" })
+
 local with_preview_2 = {
 	winblend = 10,
 	show_line = false,
@@ -56,6 +81,7 @@ require("telescope").setup({
 			-- buffer_previewer_maker = new_maker,
 			-- borderchars        = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
 		},
+		file_ignore_patterns = telescope_ignore_patterns,
 		extensions = {
 			fzy_native = {
 				override_generic_sorter = true,
@@ -83,7 +109,7 @@ M.change_colorscheme = function()
 	local opts = vim.deepcopy(colorscheme_center_list) -- define here if you want to define something
 	local ok = pcall(require("telescope.builtin").colorscheme, opts)
 	if not ok then
-        print("Couldn't change colorscheme")
+		print("Couldn't change colorscheme")
 	end
 end
 

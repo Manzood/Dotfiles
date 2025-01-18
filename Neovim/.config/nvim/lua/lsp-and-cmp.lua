@@ -80,20 +80,19 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 
 local function lsp_highlight_document(client) -- does not work at the moment
 	--[[ if client.server_capabilities.document_highlight then ]]
-	if client.server_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
+	vim.api.nvim_exec(
+		[[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
             ]],
-			false
-		)
-	else
-		vim.notify("Failed to load lsp Word highlights")
-	end
+		false
+	)
+	--[[ else ]]
+	--[[ vim.notify("Failed to load lsp Word highlights") ]]
+	--[[ end ]]
 end
 
 -- Use an on_attach function to only map the following keys
@@ -111,7 +110,7 @@ local on_attach = function(client, bufnr)
 
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
-	local opts2 = { noremap = false, silent = true }
+	--[[ local opts2 = { noremap = false, silent = true } ]]
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -149,13 +148,30 @@ cmp.setup({
 			-- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
 		end,
 	},
-	mapping = {
+	window = {
+		completion = cmp.config.window.bordered(),
+		-- documentation = cmp.config.window.bordered(),
+	},
+	--[[ mapping = { ]]
+	--[[ 	["<C-d>"] = cmp.mapping.scroll_docs(-4), ]]
+	--[[ 	["<C-f>"] = cmp.mapping.scroll_docs(4), ]]
+	--[[ 	["<C-m>"] = cmp.mapping.complete({ ]]
+	--[[ 		config = { ]]
+	--[[ 			sources = { ]]
+	--[[ 				{ name = "UltiSnips" }, ]]
+	--[[ 			}, ]]
+	--[[ 		}, ]]
+	--[[ 	}), ]]
+	--[[ 	["<C-e>"] = cmp.mapping.close(), ]]
+	--[[ 	["<C-Space>"] = cmp.mapping.confirm({ select = true }), ]]
+	--[[ }, ]]
+	mapping = cmp.mapping.preset.insert({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		-- ["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
-		["<C-m>"] = cmp.mapping.confirm({ select = true }),
-	},
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
@@ -175,11 +191,14 @@ cmp.setup({
 		native_menu = false,
 		ghost_text = true,
 	},
-
+	--[[ view = { ]]
+	--[[ 	entries = "native", ]]
+	--[[ }, ]]
 	formatting = {
 		-- Youtube: How to set up nice formatting for your sources.
 		format = lspkind.cmp_format({
 			with_text = true,
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 			menu = {
 				buffer = "[buf]",
 				nvim_lsp = "[LSP]",
@@ -264,6 +283,8 @@ require("lspconfig").sumneko_lua.setup({
 			workspace = {
 				-- Make the server aware of Neovim runtime files
 				library = vim.api.nvim_get_runtime_file("", true),
+				maxPreload = 10000, -- Add this if missing or increase it
+				preloadFileSize = 10000, -- Add this if missing or increase it
 			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {

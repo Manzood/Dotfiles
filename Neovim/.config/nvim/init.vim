@@ -104,12 +104,12 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'tanvirtin/monokai.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'EdenEast/nightfox.nvim' " Vim-Plug
-
-
 " Plug 'tjdevries/colorbuddy.nvim'
 " Plug 'marko-cerovac/material.nvim', { 'branch': 'colorbuddy' }
 Plug 'marko-cerovac/material.nvim'
-
+Plug 'tomasiser/vim-code-dark'
+Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
+Plug 'Mofiqul/vscode.nvim'
 
 " vim-be-good'
 " Plug 'ThePrimeagen/vim-be-good'
@@ -152,7 +152,7 @@ set ignorecase " I'll probably change this up in the future
 set scrolloff=5
 set signcolumn=no " toggle the signcolumn to yes for YouCompleteMe
 set inccommand=nosplit
-set pumblend=20
+set pumblend=30
 set noswapfile
 set updatetime=250
 let g:python3_host_prog = '/usr/bin/python3'
@@ -348,13 +348,15 @@ set termguicolors
 " autocmd vimenter * colorscheme doom-one
 " autocmd vimenter * colorscheme my-base16-monokai
 " autocmd vimenter * colorscheme monokai_pro      " monokai pro was so good
-colorscheme darkplus
+" colorscheme codedark   " this was my old colorscheme for quite a while, actually
+" colorscheme vscode
+colorscheme rose-pine-moon
 lua vim.g.tokyonight_style = "night"
 " autocmd vimenter * AirlineTheme onedark
 " autocmd vimenter * AirlineTheme base16_monokai
 let g:onedark_terminal_italics=1
 " colorscheme NeoSolarized
-" set background=light
+set background=dark
 
 " You can experiment with airline themes using the command :AirlineTheme
 " let g:airline_theme="onedark"
@@ -456,17 +458,17 @@ nnoremap <leader>cf <cmd>lua require('finders').contest()<cr>
 
 " ------------------------------------------------ Transparency ------------------------------------------------------
 
-" transparent background, uncomment to make background transparent
-" hi Normal guibg=none ctermbg=none
-" hi LineNr guibg=none ctermbg=none
-" hi Folded guibg=none ctermbg=none
-" hi NonText guibg=none ctermbg=none
-" hi SpecialKey guibg=none ctermbg=none
-" hi VertSplit guibg=none ctermbg=none
-" hi SignColumn guibg=none ctermbg=none
-" hi EndOfBuffer guibg=none ctermbg=none
-" hi NormalFloat guibg=none ctermbg=none
-" hi Pmenu guibg=none ctermbg=none
+" transparent background, comment/uncomment to toggle transparency in neovim
+hi Normal guibg=none ctermbg=none
+hi LineNr guibg=none ctermbg=none
+hi Folded guibg=none ctermbg=none
+hi NonText guibg=none ctermbg=none
+hi SpecialKey guibg=none ctermbg=none
+hi VertSplit guibg=none ctermbg=none
+hi SignColumn guibg=none ctermbg=none
+hi EndOfBuffer guibg=none ctermbg=none
+hi NormalFloat guibg=none ctermbg=none
+hi Pmenu guibg=none ctermbg=none
 
 
 
@@ -477,9 +479,4 @@ nnoremap <leader>cf <cmd>lua require('finders').contest()<cr>
 
 " let g:markdown_folding = 1
 
-lua << EOF
-require("catppuccin").setup {
-    flavour = "macchiato" -- mocha, macchiato, frappe, latte
-}
-EOF
-" colorscheme catppuccin
+" colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha

@@ -39,15 +39,15 @@ end
 finders.fd_in_snippets = function()
 	local opts = vim.deepcopy(center_list)
 	opts.prompt_prefix = "Snippets ❯ "
-	opts.cwd = "/home/manzood/Coding/Competitive-Programming/Snippets"
+	opts.cwd = "/home/manzood/Coding/Competitive-Programming/snippets"
 	require("telescope.builtin").fd(opts)
 end
 
 finders.contest = function()
-    local opts = vim.deepcopy(with_preview)
-    opts.prompt_prefix = "Contest ❯ "
+	local opts = vim.deepcopy(with_preview)
+	opts.prompt_prefix = "Contest ❯ "
 	opts.cwd = "../"
-    require("telescope.builtin").fd(opts);
+	require("telescope.builtin").fd(opts)
 end
 
 return finders

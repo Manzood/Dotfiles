@@ -19,7 +19,7 @@ set incsearch
 set hidden
 set number
 set rnu
-colorscheme industry
+colorscheme darkblue
 
 augroup numbertoggle
     autocmd!

@@ -183,3 +183,41 @@ alias tmux='tmux -u'
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/manzood/Applications/MiniConda/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/manzood/Applications/MiniConda/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/manzood/Applications/MiniConda/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/manzood/Applications/MiniConda/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# study stream aliases
+# Requires https://github.com/caarlos0/timer to be installed. spd-say should ship with your distro
+
+# From bashbunni's youtube video
+declare -A pomo_options
+pomo_options["work"]="45"
+pomo_options["break"]="10"
+
+pomodoro () {
+  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
+  val=$1
+  echo $val | lolcat
+  timer ${pomo_options["$val"]}m
+  spd-say "'$val' session done"
+  fi
+}
+
+alias wo="pomodoro 'work'"
+alias br="pomodoro 'break'"
+
+export TERM=xterm-256color

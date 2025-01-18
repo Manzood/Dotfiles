@@ -153,7 +153,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 10.0
 
   # Offset is the exra space around each characte. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -902,6 +902,39 @@ schemes:
       cyan:    '#29b8db'
       white:   '#e5e5e5'
 
+# Colors (Solarized Light)
+  solarized_light: &solarized_light
+    # Default colors
+    primary:
+      background: '#fdf6e3' # base3
+      foreground: '#657b83' # base00
+
+    # Cursor colors
+    cursor:
+      text:   '#fdf6e3' # base3
+      cursor: '#657b83' # base00
+
+    # Normal colors
+    normal:
+      black:   '#073642' # base02
+      red:     '#dc322f' # red
+      green:   '#859900' # green
+      yellow:  '#b58900' # yellow
+      blue:    '#268bd2' # blue
+      magenta: '#d33682' # magenta
+      cyan:    '#2aa198' # cyan
+      white:   '#eee8d5' # base2
+
+    # Bright colors
+    bright:
+      black:   '#002b36' # base03
+      red:     '#cb4b16' # orange
+      green:   '#586e75' # base01
+      yellow:  '#657b83' # base00
+      blue:    '#839496' # base0
+      magenta: '#6c71c4' # violet
+      cyan:    '#93a1a1' # base1
+      white:   '#fdf6e3' # base3
 
 # Colors (Solarized Dark)
   solarized_dark: &solarized_dark
@@ -1146,8 +1179,52 @@ schemes:
       cyan:    '#58d1eb'
       white:   '#f6f6ef'
 
+  rose-pine: &rose-pine
+    primary:
+      background: "0x232136"
+      foreground: "0xe0def4"
+    cursor:
+      text: "0xe0def4"
+      cursor: "0x56526e"
+    vi_mode_cursor:
+      text: "0xe0def4"
+      cursor: "0x56526e"
+    line_indicator:
+      foreground: None
+      background: None
+    selection:
+      text: "0xe0def4"
+      background: "0x44415a"
+    normal:
+      black: "0x393552"
+      red: "0xeb6f92"
+      green: "0x3e8fb0"
+      yellow: "0xf6c177"
+      blue: "0x9ccfd8"
+      magenta: "0xc4a7e7"
+      cyan: "0xea9a97"
+      white: "0xe0def4"
+    bright:
+      black: "0x6e6a86"
+      red: "0xeb6f92"
+      green: "0x3e8fb0"
+      yellow: "0xf6c177"
+      blue: "0x9ccfd8"
+      magenta: "0xc4a7e7"
+      cyan: "0xea9a97"
+      white: "0xe0def4"
+    hints:
+      start:
+        foreground: "#908caa"
+        background: "#2a273f"
+      end:
+        foreground: "#6e6a86"
+        background: "#2a273f"
+
 
 # this sets the colorscheme to whatever you've picked
 # I'll set all the options here, at some point
 # colors: *Monokai-Pro
-colors: *dark-plus
+# colors: *dark-plus
+colors: *rose-pine
+# colors: *solarized_light
