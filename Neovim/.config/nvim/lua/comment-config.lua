@@ -1,48 +1,25 @@
-local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
-	return
+-- context_commentstring nvim-treesitter module is deprecated, use require('ts_context_commentstring').setup {} and set vim.g.skip_ts_context_commentstring_modu
+-- le = true to speed up loading instead.
+-- Feature will be removed in ts_context_commentstring in the future (see https://github.com/JoosepAlviste/nvim-ts-context-commentstring/issues/82 for more info
+-- )
+-- stack traceback:
+--         ...-commentstring/lua/ts_context_commentstring/internal.lua:144: in function 'attach'
+--         .../plugged/nvim-treesitter/lua/nvim-treesitter/configs.lua:509: in function 'attach_module'
+--         .../plugged/nvim-treesitter/lua/nvim-treesitter/configs.lua:532: in function 'reattach_module'
+--         .../plugged/nvim-treesitter/lua/nvim-treesitter/configs.lua:133: in function <.../plugged/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+--         [C]: in function 'nvim_cmd'
+--         /tmp/.mount_nvimIcui4z/usr/share/nvim/runtime/filetype.lua:36: in function </tmp/.mount_nvimIcui4z/usr/share/nvim/runtime/filetype.lua:35>
+--         [C]: in function 'nvim_buf_call'
+--         /tmp/.mount_nvimIcui4z/usr/share/nvim/runtime/filetype.lua:35: in function </tmp/.mount_nvimIcui4z/usr/share/nvim/runtime/filetype.lua:10>
+
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}
+
+vim.g.skip_ts_context_commentstring_module = true
+local get_option = vim.filetype.get_option
+vim.filetype.get_option = function(filetype, option)
+  return option == "commentstring"
+    and require("ts_context_commentstring.internal").calculate_commentstring()
+    or get_option(filetype, option)
 end
-
-comment.setup({
-	pre_hook = function(ctx)
-		local U = require("Comment.utils")
-
-		local location = nil
-		if ctx.ctype == U.ctype.block then
-			location = require("ts_context_commentstring.utils").get_cursor_location()
-		elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-			location = require("ts_context_commentstring.utils").get_visual_start_location()
-		end
-
-		return require("ts_context_commentstring.internal").calculate_commentstring({
-			key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
-			location = location,
-		})
-	end,
-	toggler = {
-		line = "<C-_>",
-		block = "gbc", -- This is currently default
-	},
-	-- pre_hook = function(ctx)
-	--     -- Only calculate commentstring for tsx filetypes
-	--     if vim.bo.filetype == 'typescriptreact' then
-	--         local U = require('Comment.utils')
-	--
-	--         -- Detemine whether to use linewise or blockwise commentstring
-	--         local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
-	--
-	--         -- Determine the location where to calculate commentstring from
-	--         local location = nil
-	--         if ctx.ctype == U.ctype.block then
-	--             location = require('ts_context_commentstring.utils').get_cursor_location()
-	--         elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-	--             location = require('ts_context_commentstring.utils').get_visual_start_location()
-	--         end
-	--
-	--         return require('ts_context_commentstring.internal').calculate_commentstring({
-	--             key = type,
-	--             location = location,
-	--         })
-	--     end
-	-- end,
-})

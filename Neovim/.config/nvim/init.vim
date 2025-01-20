@@ -122,7 +122,7 @@ runtime! plugin/sensible.vim
 
 " --------------------------general configuration---------------------------
 " configure format on save
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre * lua vim.lsp.buf.format()
 " set lazyredraw
 set nocompatible
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "stops comments from showing up on newlines
@@ -425,9 +425,9 @@ lua require ('comment-config')
 " lua require ('neorg-config')
 lua require ('neoscroll-config')
 lua require ('indent-blankline-config')
-lua require ('nvim-tree-config')
+" lua require ('nvim-tree-config')
 lua require ('gitsigns-config')
-lua require ('bufferline-config')
+"lua require ('bufferline-config')
 lua require ('nvim-autopairs-config')
 lua require ('null-ls-config')
 lua require ('toggleterm-config')
