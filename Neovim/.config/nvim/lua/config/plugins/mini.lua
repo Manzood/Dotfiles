@@ -3,8 +3,11 @@ return {
     {
         'echasnovski/mini.nvim',
         config = function()
-            local statusline = require 'mini.statusline'
-            statusline.setup { use_icons = true }
+            require('mini.statusline').setup { use_icons = true }
+            require('mini.files').setup()
+            -- require('mini.completion').setup()
+            require('mini.icons').setup()
+            require('mini.pairs').setup()
         end
     }
 }
