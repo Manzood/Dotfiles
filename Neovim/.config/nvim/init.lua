@@ -91,3 +91,88 @@ vim.keymap.set("n", "<space>example", function()
 end)
 
 vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open()<CR>")
+
+-- Quality of life improvements
+
+vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
+
+vim.keymap.set("n", "n", "nzzzv");
+vim.keymap.set("n", "N", "Nzzzv");
+vim.keymap.set("n", "J", "mzJ`z");
+
+-- undo boundaries
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", "!", "!<c-g>u")
+vim.keymap.set("i", "?", "?<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
+
+-- line movements
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("i", "<C-j>", "<esc>:m .+1<CR>==")
+vim.keymap.set("i", "<C-k>", "<esc>:m .-2<CR>==")
+vim.keymap.set("n", "<leader>k", ":m .-2<CR>==") -- probably not necessary, it's basically ddkP
+vim.keymap.set("n", "<leader>j", ":m .+1<CR>==") -- probably not necessary, it's basically ddp but the cursor stays there
+
+--better visual mode tabbing
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- classic mappings
+vim.keymap.set("n", "<c-s>", ":w<CR>")
+vim.keymap.set("i", "<c-s>", "<Esc>:w<CR>a")
+vim.keymap.set("v", "<c-c>", "y")
+
+vim.keymap.set("n", "<leader>y", ":%y+<cr>") -- might remove this one if I don't use it
+
+-- managing windows
+vim.keymap.set("n", "<C-h>", ":wincmd h<cr>")
+vim.keymap.set("n", "<C-l>", ":wincmd l<cr>")
+vim.keymap.set("n", "<C-j>", ":wincmd j<cr>")
+vim.keymap.set("n", "<C-k>", ":wincmd k<cr>")
+vim.keymap.set("n", "<M-h>", ":vertical resize -2<cr>")
+vim.keymap.set("n", "<M-l>", ":vertical resize +2<cr>")
+vim.keymap.set("n", "<M-j>", ":resize +2<cr>")
+vim.keymap.set("n", "<M-k>", ":resize -2<cr>")
+
+-- competitive programming
+-- TODO update this to call make instead?
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "cpp",
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "<C-B>",
+            ":wall | !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>",
+            { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "<C-Q>",
+            ":wall | !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>",
+            { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "<leader>r",
+            ":wall | !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <CR>",
+            { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "<leader>n",
+            ":wall | !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <CR>",
+            { noremap = true, silent = true })
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "<leader>r",
+            ":wall | !python3 % < in <CR>",
+            { noremap = true, silent = true })
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "c",
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "<C-B>",
+            ":wall | !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< <CR>",
+            { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "<leader>n",
+            ":wall | !gcc -std=c17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <CR>",
+            { noremap = true, silent = true })
+    end
+})

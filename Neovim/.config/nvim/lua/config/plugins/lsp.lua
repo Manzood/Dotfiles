@@ -3,7 +3,7 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = {
             {
-                -- "saghen/blink.cmp",
+                "saghen/blink.cmp",
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
                 opts = {
@@ -24,11 +24,13 @@ return {
         config = function(_, opts)
             local lspconfig = require('lspconfig')
             for server, config in pairs(opts.servers) do
-                -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                -- probably want to change this to nvim-cmp, it served me quite well
-                -- I'd also like some kind of a nerd font
+                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
                 lspconfig[server].setup(config)
             end
+
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                border = "rounded",
+            })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(args)
@@ -48,7 +50,10 @@ return {
             })
 
             vim.keymap.set("n", "<space>ff", function() vim.lsp.buf.format() end)
-            -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })]]
+            vim.keymap.set("n", "<space>rn", function() vim.lsp.buf.rename() end)
+            vim.keymap.set("n", "<space>ca", function() vim.lsp.buf.code_action() end)
+            vim.keymap.set("n", "<space>gr", function() vim.lsp.buf.references() end)
+            vim.keymap.set("n", "<leader>q", function() vim.diagnostic.setloclist() end)
         end,
     }
 }
