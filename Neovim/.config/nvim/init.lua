@@ -30,7 +30,6 @@ local function set_nornu()
     vim.wo.relativenumber = false
 end
 vim.api.nvim_create_augroup('numbertoggle', { clear = true })
-
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
     group = 'numbertoggle',
     callback = set_rnu
@@ -60,13 +59,14 @@ vim.keymap.set('n', 'grr', vim.lsp.buf.references)
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
+-- handled by mini.basics
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--     desc = 'Highlight when yanking (copying) text',
+--     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+--     callback = function()
+--         vim.highlight.on_yank()
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd('TermOpen', {
     group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
@@ -120,21 +120,21 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- classic mappings
-vim.keymap.set("n", "<c-s>", ":w<CR>")
+-- vim.keymap.set("n", "<c-s>", ":w<CR>")
 vim.keymap.set("i", "<c-s>", "<Esc>:w<CR>a")
 vim.keymap.set("v", "<c-c>", "y")
 
 vim.keymap.set("n", "<leader>y", ":%y+<cr>") -- might remove this one if I don't use it
 
--- managing windows
-vim.keymap.set("n", "<C-h>", ":wincmd h<cr>")
-vim.keymap.set("n", "<C-l>", ":wincmd l<cr>")
-vim.keymap.set("n", "<C-j>", ":wincmd j<cr>")
-vim.keymap.set("n", "<C-k>", ":wincmd k<cr>")
-vim.keymap.set("n", "<M-h>", ":vertical resize -2<cr>")
-vim.keymap.set("n", "<M-l>", ":vertical resize +2<cr>")
-vim.keymap.set("n", "<M-j>", ":resize +2<cr>")
-vim.keymap.set("n", "<M-k>", ":resize -2<cr>")
+-- managing windows - currently being handled by mini.basics
+-- vim.keymap.set("n", "<C-h>", ":wincmd h<cr>")
+-- vim.keymap.set("n", "<C-l>", ":wincmd l<cr>")
+-- vim.keymap.set("n", "<C-j>", ":wincmd j<cr>")
+-- vim.keymap.set("n", "<C-k>", ":wincmd k<cr>")
+-- vim.keymap.set("n", "<M-h>", ":vertical resize -2<cr>")
+-- vim.keymap.set("n", "<M-l>", ":vertical resize +2<cr>")
+-- vim.keymap.set("n", "<M-j>", ":resize +2<cr>")
+-- vim.keymap.set("n", "<M-k>", ":resize -2<cr>")
 
 -- competitive programming
 -- TODO update this to call make instead?
