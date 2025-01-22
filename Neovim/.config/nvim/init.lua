@@ -39,6 +39,21 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
     callback = set_nornu
 })
 
+-- When editing a file, always jump to the last cursor position
+if vim.fn.has("autocmd") == 1 then
+    vim.api.nvim_create_autocmd("BufReadPost", {
+        pattern = "*",
+        callback = function()
+            local last_cursor_pos = vim.fn.line("'\"")
+            local current_line_count = vim.fn.line("$")
+            if last_cursor_pos > 0 and last_cursor_pos <= current_line_count then
+                vim.api.nvim_command("normal! g'\"")
+            end
+        end,
+    })
+end
+
+
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "kj", "<Esc>")
 vim.keymap.set("i", "JK", "<Esc>")

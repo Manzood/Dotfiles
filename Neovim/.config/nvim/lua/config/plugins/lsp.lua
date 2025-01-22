@@ -17,7 +17,25 @@ return {
         },
         opts = {
             servers = {
-                lua_ls = {},
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            runtime = {
+                                version = 'LuaJIT',                  -- Neovim uses LuaJIT
+                                path = vim.split(package.path, ';'), -- Include Neovim runtime paths
+                            },
+                            diagnostics = {
+                                globals = { 'vim' }, -- Tell LSP that 'vim' is a global variable
+                            },
+                            workspace = {
+                                library = vim.api.nvim_get_runtime_file("", true), -- Make Neovim's runtime available
+                            },
+                            telemetry = {
+                                enable = false, -- Disable telemetry
+                            },
+                        },
+                    },
+                },
                 clangd = {}
             }
         },
