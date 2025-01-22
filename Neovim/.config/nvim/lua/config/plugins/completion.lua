@@ -2,15 +2,9 @@
 
 return {
     'saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
     dependencies = 'rafamadriz/friendly-snippets',
 
-    -- use a release tag to download pre-built binaries
     version = '*',
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -45,9 +39,15 @@ return {
                         return { 'lsp', 'path', 'snippets', 'buffer' }
                     end
                 end,
-            min_keyword_length = function()
-                return vim.bo.filetype == 'lua' and 2 or
-                    3 -- just keeping the filetype option here in case I need it later
+            min_keyword_length = function(ctx)
+                -- Snacks.notify(ctx.mode) -- pretty useful for debugging
+                if ctx.mode == 'cmdline' then
+                    return 0
+                elseif vim.bo.filetype == 'lua' then
+                    return 2
+                else
+                    return 3
+                end
             end
         },
         completion = {
