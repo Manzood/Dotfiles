@@ -42,8 +42,18 @@ return {
         config = function(_, opts)
             local lspconfig = require('lspconfig')
             for server, config in pairs(opts.servers) do
-                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+                -- blink.nvim
+                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities) -- TODO wrap this in some kind of if statement?
                 lspconfig[server].setup(config)
+
+                -- classic config
+                -- lspconfig[server].setup{}
+
+                -- nvim-cmp
+                -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+                -- lspconfig[server].setup {
+                --     capabilities = capabilities
+                -- }
             end
 
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -71,6 +81,8 @@ return {
             vim.keymap.set("n", "<space>rn", function() vim.lsp.buf.rename() end)
             vim.keymap.set("n", "<space>ca", function() vim.lsp.buf.code_action() end)
             vim.keymap.set("n", "<space>gr", function() vim.lsp.buf.references() end)
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
+            vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
             vim.keymap.set("n", "<leader>q", function() vim.diagnostic.setloclist() end)
         end,
     }
