@@ -1,1 +1,6 @@
 theme = catppuccin-mocha
+mouse-hide-while-typing = true
+window-decoration = true
+keybind = global:cmd+s=toggle_quick_terminal
+background-opacity = 1.0
+# background-blur-radius = 20

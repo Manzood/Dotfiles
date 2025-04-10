@@ -40,6 +40,7 @@ return {
             }
         },
         config = function(_, opts)
+            vim.diagnostic.config({ virtual_text = true });
             local lspconfig = require('lspconfig')
             for server, config in pairs(opts.servers) do
                 -- blink.nvim
@@ -66,7 +67,7 @@ return {
                     if not client then return end
 
                     ---@diagnostic disable-next-line: missing-parameter
-                    if client.supports_method('textDocument/formatting') then
+                    if client:supports_method('textDocument/formatting') then
                         vim.api.nvim_create_autocmd('BufWritePre', {
                             buffer = args.buf,
                             callback = function()
