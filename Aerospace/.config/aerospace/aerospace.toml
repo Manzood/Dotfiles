@@ -9,7 +9,15 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+  'exec-and-forget sketchybar'
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 
 # Start AeroSpace at login
 start-at-login = false
@@ -42,6 +50,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
+
+# drag and move anything around
+# defaults write -g NSWindowShouldDragOnGesture -bool true
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
@@ -81,8 +92,8 @@ run = 'layout floating'
     inner.vertical =   10
     outer.left =       10
     outer.bottom =     10
-    outer.top =        10
-    outer.right =      10
+    outer.top =        10 # accomodate sketchybar
+    outer.right =      40
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -214,6 +225,7 @@ run = 'layout floating'
     alt-g = 'exec-and-forget open -a /Applications/Ghostty.app'
     alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
     alt-s = 'exec-and-forget open -a /Applications/Safari.app'
+    alt-d = 'exec-and-forget open -a /Applications/Discord.app'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -234,3 +246,5 @@ run = 'layout floating'
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+

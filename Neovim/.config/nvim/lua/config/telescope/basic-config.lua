@@ -20,8 +20,12 @@ B.setup = function()
     end)
     -- find snippets
     vim.keymap.set("n", "<space>fs", function()
+        local chosen_cwd = "/home/manzood/Coding/Competitive-Programming/snippets"
+        if vim.fn.has("macunix") then
+            chosen_cwd = "/Users/manzood/Coding/competitive-programming/snippets"
+        end
         local opts = require('telescope.themes').get_ivy({
-            cwd = "/home/manzood/Coding/Competitive-Programming/snippets",
+            cwd = chosen_cwd,
             prompt_prefix = "Snippets ❯ ",
         })
         require('telescope.builtin').find_files(opts)

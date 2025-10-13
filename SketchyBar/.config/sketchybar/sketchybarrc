@@ -1,0 +1,207 @@
+# This is a demo config to showcase some of the most important commands.
+# It is meant to be changed and configured, as it is intentionally kept sparse.
+# For a (much) more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/dotfiles
+
+# FONT_FACE="Hack Nerd Font"
+FONT_FACE="JetBrainsMono Nerd Font"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+# sketchybar --bar position=top height=32 blur_radius=30 color=0x40000000
+sketchybar --bar \
+    position=right \
+    height=32 \
+    blur_radius=30 \
+    color=0x66494d64 \
+    margin=0 \
+    padding_left=4 \
+    padding_right=4 \
+    sticky=on
+
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+# default=(
+#   padding_left=5
+#   padding_right=5
+#   icon.font="$FONT_FACE:Bold:17.0"
+#   label.font="$FONT_FACE:Bold:14.0"
+#   icon.color=0xffffffff
+#   label.color=0xffffffff
+#   icon.padding_left=4
+#   icon.padding_right=4
+#   label.padding_left=4
+#   label.padding_right=4
+# )
+
+default=(
+  background.height=32
+  # padding_left=5
+  # padding_right=5
+  icon.font="$FONT_FACE:Medium:20.0"
+  label.font="$FONT_FACE:Bold:14.0"
+  icon.color=0xff24273a
+  label.color=0xff24273a
+  icon.padding_left=5
+  icon.padding_right=5
+  label.padding_left=0
+  label.padding_right=5
+  label.y_offset=1
+)
+
+sketchybar --default "${default[@]}"
+
+##### Adding Mission Control Space Indicators #####
+# Let's add some mission control spaces:
+# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+# to indicate active and available mission control spaces.
+
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+# for i in "${!SPACE_ICONS[@]}"
+# do
+#   sid="$(($i+1))"
+#   space=(
+#     space="$sid"
+#     icon="${SPACE_ICONS[i]}"
+#     icon.padding_left=7
+#     icon.padding_right=7
+#     background.color=0x40ffffff
+#     background.corner_radius=5
+#     background.height=25
+#     label.drawing=off
+#     script="$PLUGIN_DIR/space.sh"
+#     # click_script="yabai -m space --focus $sid"
+#     click_script="aerospace workspace $sid"
+#   )
+#   sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+# done
+
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar, where
+# only the properties deviating from the current defaults need to be set
+
+# sketchybar --add item current_space left \
+#     --set current_space \
+#     background.color=0xfff5a97f \
+#     label.drawing=off \
+#     script="$PLUGIN_DIR/current_space.sh" \
+#     --subscribe current_space space_change mouse.clicked
+
+sketchybar --add event aerospace_workspace_change
+for sid in $(aerospace list-workspaces --all); do
+    if [ "$sid" -lt 6 ]; then
+        sketchybar --add item space.$sid left \
+            --subscribe space.$sid aerospace_workspace_change \
+            --set space.$sid \
+            background.color=0x44ffffff \
+            background.corner_radius=5 \
+            background.height=30 \
+            background.drawing=off \
+            icon="${SPACE_ICONS[sid - 1]}" \
+            icon.padding_right=5 \
+            icon.padding_left=8 \
+            click_script="aerospace workspace $sid" \
+            script="$PLUGIN_DIR/aerospace.sh $sid"
+            # icon="${SPACE_ICONS[sid]}" \
+    fi
+done
+
+# sketchybar --add item chevron left \
+#            --set chevron icon= label.drawing=off \
+#            --add item front_app left \
+#            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+#            --subscribe front_app front_app_switched
+
+sketchybar --add item front_app left \
+    --set front_app \
+    background.color=0xffa6da95 \
+    background.padding_left=5 \
+    background.padding_right=0 \
+    icon.y_offset=1 \
+    label.drawing=no \
+    script="$PLUGIN_DIR/front_app.sh" \
+    --add item front_app.separator left \
+    --set front_app.separator \
+    background.color=0x00000000 \
+    icon= \
+    icon.color=0xffa6da95 \
+    icon.font="$FONT_FACE:Bold:23.0" \
+    icon.padding_left=0 \
+    icon.padding_right=0 \
+    icon.y_offset=1 \
+    label.drawing=no \
+    --add item front_app.name left \
+    --set front_app.name \
+    background.color=0x00000000 \
+    icon.drawing=off \
+    label.font="$FONT_FACE:Bold:16.0" \
+    label.color=0xffcad3f5 \
+    label.padding_left=5
+
+sketchybar --add bracket front_app_bracket \
+    front_app \
+    front_app.separator \
+    front_app.name \
+    --subscribe front_app front_app_switched
+
+##### Adding Right Items #####
+# In the same way as the left items we can add items to the right side.
+# Additional position (e.g. center) are available, see:
+# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+
+# Some items refresh on a fixed cycle, e.g. the clock runs its script once
+# every 10s. Other items respond to events they subscribe to, e.g. the
+# volume.sh script is only executed once an actual change in system audio
+# volume is registered. More info about the event system can be found here:
+# https://felixkratz.github.io/SketchyBar/config/events
+
+# DEFAULTS
+sketchybar --add item clock right \
+           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --add item battery right \
+           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change
+
+sketchybar --add item clock right \
+    --set clock \
+    icon=󰃰 \
+    background.color=0xffed8796 \
+    update_freq=1 \
+    script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add event spotify_change $SPOTIFY_EVENT \
+    --add item spotify right \
+    --set spotify \
+    icon= \
+    icon.y_offset=1 \
+    label.drawing=off \
+    label.padding_left=3 \
+    script="$PLUGIN_DIR/spotify.sh" \
+    --subscribe spotify spotify_change mouse.clicked
+
+# sketchybar --add item volume right \
+#            --set volume script="$PLUGIN_DIR/volume.sh" \
+#            -- subscribe volume volume_change \
+#            -- add item battery right 
+#            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+#            --subscribe battery system_woke power_source_change
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
+
+sketchybar --trigger space_change
+

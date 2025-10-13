@@ -45,6 +45,20 @@ return {
             for server, config in pairs(opts.servers) do
                 -- blink.nvim
                 config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities) -- TODO wrap this in some kind of if statement?
+
+                -- -- specific clangd config
+                -- if server == "clangd" then
+                --     config.cmd = {
+                --         "/opt/homebrew/opt/llvm/bin/clangd",
+                --         "--enable-config",
+                --         "--query-driver=/opt/homebrew/opt/gcc/bin/g++-15,/opt/homebrew/opt/gcc/bin/gcc-15",
+                --     }
+                --     config.on_init = function(client)
+                --         client.config.cmd_env = client.config.cmd_env or {}
+                --         client.config.cmd_env.PATH = os.getenv("HOME") .. "/.local/bin:" .. os.getenv("PATH")
+                --     end
+                -- end
+
                 lspconfig[server].setup(config)
 
                 -- classic config

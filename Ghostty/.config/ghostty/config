@@ -1,6 +1,10 @@
 theme = catppuccin-mocha
 mouse-hide-while-typing = true
 window-decoration = true
-keybind = global:cmd+s=toggle_quick_terminal
+keybind = global:cmd+g=toggle_quick_terminal
 background-opacity = 1.0
 # background-blur-radius = 20
+keybind = ctrl+[=esc:
+font-feature=-calt
+# font-feature=-liga # disable other ligatures
+# font-feature=-dlig # disable other ligatures

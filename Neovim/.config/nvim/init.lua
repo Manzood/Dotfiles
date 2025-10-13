@@ -154,16 +154,16 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "cpp",
     callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "<C-B>",
-            ":wall | !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>",
+            ":wall | !g++ -std=c++20 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>",
             { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(0, "n", "<C-Q>",
-            ":wall | !g++ -std=c++17 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>",
+            ":wall | !g++ -std=c++20 -Wall -Wextra -O2 -Wshadow -Wfloat-equal -Wconversion -Wshift-overflow=2 -Wduplicated-cond -Wno-unused-result -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fsanitize=undefined % -D local -o %< <CR>g++ -std=c++20 -Wall -Wextra -Wshadow -Wno-unused-result -D local % -o %< <CR>",
             { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(0, "n", "<leader>r",
-            ":wall | !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <CR>",
+            ":wall | !g++ -std=c++20 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< < in <CR>",
             { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(0, "n", "<leader>n",
-            ":wall | !g++ -std=c++17 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <CR>",
+            ":wall | !g++ -std=c++20 -Wall -Wextra -Wshadow -Wno-unused-result % -D local -o %< && ./%< <CR>",
             { noremap = true, silent = true })
     end
 })
