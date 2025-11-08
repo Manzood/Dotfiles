@@ -17,7 +17,7 @@ SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
 # sketchybar --bar position=top height=32 blur_radius=30 color=0x40000000
 sketchybar --bar \
-    position=right \
+    position=top \
     height=32 \
     blur_radius=30 \
     color=0x66494d64 \
