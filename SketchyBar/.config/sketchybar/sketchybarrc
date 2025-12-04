@@ -5,26 +5,15 @@ CONFIG_DIR="$HOME/Dotfiles/SketchyBar/.config/sketchybar"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
+source "$CONFIG_DIR/colorschemes.sh"
+# COLOR_SCHEME_NAME="catppuccin-light"
+COLOR_SCHEME_NAME="rose-pine"
+load_colorscheme "$COLOR_SCHEME_NAME"
+
 BAR_HEIGHT=30
 ITEM_HEIGHT=26
 CORNER_RADIUS=9
 FRONT_ICON_WIDTH=32
-
-COLOR_BAR=0xe6191b2b
-COLOR_ITEM_BG=0x551f2335
-COLOR_ITEM_ALT=0x6631374f
-COLOR_ACCENT=0xfff5bde6
-COLOR_ACCENT_TEXT=0xff1e1e2e
-COLOR_TEXT=0xffcad3f5
-COLOR_DIM=0xff8aadf4
-COLOR_BORDER=0x332a2f41
-COLOR_GOOD=0xffa6da95
-COLOR_WARN=0xfff5a97f
-
-SPACE_ACTIVE_BG=0xfff4dbd6
-SPACE_INACTIVE_BG=0x441b1f30
-SPACE_ACTIVE_FG=0xff1e2030
-SPACE_INACTIVE_FG=0xffa6accd
 
 MAIN_DISPLAY=$(system_profiler SPDisplaysDataType | grep -B 3 'Main Display:' | awk '/Display Type/ {print $3}')
 SPOTIFY_LABEL_MAX=22
