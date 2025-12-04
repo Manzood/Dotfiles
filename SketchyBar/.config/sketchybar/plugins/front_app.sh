@@ -16,37 +16,37 @@
 # /default config
 
 
-ICON_PADDING_RIGHT=5
+ICON_PADDING=5
 
 case $INFO in
 "Arc")
-    ICON_PADDING_RIGHT=5
+    ICON_PADDING=5
     ICON=󰞍
     ;;
 "Code")
-    ICON_PADDING_RIGHT=4
+    ICON_PADDING=4
     ICON=󰨞
     ;;
 "Calendar")
-    ICON_PADDING_RIGHT=3
+    ICON_PADDING=3
     ICON=
     ;;
 "Discord")
     ICON=
     ;;
 "FaceTime")
-    ICON_PADDING_RIGHT=5
+    ICON_PADDING=5
     ICON=
     ;;
 "Finder")
     ICON=󰀶
     ;;
 "Google Chrome")
-    ICON_PADDING_RIGHT=7
+    ICON_PADDING=7
     ICON=
     ;;
 "IINA")
-    ICON_PADDING_RIGHT=4
+    ICON_PADDING=4
     ICON=󰕼
     ;;
 "kitty")
@@ -56,34 +56,34 @@ case $INFO in
     ICON=
     ;;
 "Notion")
-    ICON_PADDING_RIGHT=6
+    ICON_PADDING=6
     ICON=󰎚
     ;;
 "Preview")
-    ICON_PADDING_RIGHT=3
+    ICON_PADDING=3
     ICON=
     ;;
 "PS Remote Play")
-    ICON_PADDING_RIGHT=3
+    ICON_PADDING=3
     ICON=
     ;;
 "Spotify")
-    ICON_PADDING_RIGHT=2
+    ICON_PADDING=2
     ICON=
     ;;
 "TextEdit")
-    ICON_PADDING_RIGHT=4
+    ICON_PADDING=4
     ICON=
     ;;
 "Transmission")
-    ICON_PADDING_RIGHT=3
+    ICON_PADDING=3
     ICON=󰶘
     ;;
 *)
-    ICON_PADDING_RIGHT=2
+    ICON_PADDING=2
     ICON=
     ;;
 esac
 
-sketchybar --set $NAME icon=$ICON icon.padding_right=$ICON_PADDING_RIGHT
+sketchybar --set $NAME icon=$ICON icon.padding_left=$ICON_PADDING icon.padding_right=$ICON_PADDING
 sketchybar --set $NAME.name label="$INFO"
