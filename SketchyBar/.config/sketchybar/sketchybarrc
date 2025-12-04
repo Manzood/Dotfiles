@@ -67,6 +67,7 @@ sketchybar --add event aerospace_workspace_change
 sketchybar --add event spotify_change $SPOTIFY_EVENT
 
 SPACE_PILL_WIDTH=34
+LEFT_SPACE_PADDING=$((SPACE_PILL_WIDTH / 4))
 
 space_item=(
   background.drawing=on
@@ -95,6 +96,13 @@ fi
 if [[ ${#SPACES_LIST[@]} -eq 0 ]]; then
   SPACES_LIST=(1 2 3 4 5)
 fi
+
+sketchybar --add item space.left_padding left \
+           --set space.left_padding \
+               width=$LEFT_SPACE_PADDING \
+               background.drawing=off \
+               icon.drawing=off \
+               label.drawing=off
 
 for sid in "${SPACES_LIST[@]}"; do
   sketchybar --add item space.$sid left \
