@@ -1,0 +1,13 @@
+# vim:ft=conf
+
+# todo handle the notch
+
+sketchybar --bar \
+    position=top \
+    height=26 \
+    blur_radius=100 \
+    color=0x66494d64 \
+    margin=0 \
+    padding_left=4 \
+    padding_right=4 \
+    sticky=on

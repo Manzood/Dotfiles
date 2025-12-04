@@ -1,0 +1,10 @@
+sketchybar --bar \
+    position=top \
+    height=30 \
+    blur_radius=20 \
+    color=0x66494d64 \
+    margin=0 \
+    padding_left=4 \
+    padding_right=4 \
+    sticky=on
+

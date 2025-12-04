@@ -12,7 +12,8 @@ after-login-command = []
 # maybe switch between two workspaces and then forget to show the sketchybar active workspace thing?
 after-startup-command = [
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
-  'exec-and-forget sketchybar'
+  'exec-and-forget sketchybar',
+  # 'exec-and-forget sketchybar FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Notify Sketchybar about workspace change
@@ -59,9 +60,9 @@ automatically-unhide-macos-hidden-apps = false
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'safari'
-run = 'layout floating'
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'safari'
+# run = 'layout floating'
  
 [[on-window-detected]]
 if.app-name-regex-substring = 'camera'
@@ -97,7 +98,10 @@ run = 'layout floating'
     inner.vertical =   6
     outer.left =       8
     outer.bottom =     8
-    outer.top =        38 # accomodate sketchybar
+    outer.top =        [
+        { monitor."Built-in Retina Display" = 8} ,
+        36
+    ]
     outer.right =      8
 
 # 'main' binding mode declaration
@@ -156,15 +160,15 @@ run = 'layout floating'
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
+    # alt-4 = 'workspace 4'
+    # alt-5 = 'workspace 5'
+    # alt-6 = 'workspace 6'
+    # alt-7 = 'workspace 7'
+    # alt-8 = 'workspace 8'
+    # alt-9 = 'workspace 9'
     # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
-    # alt-b = 'workspace B'
-    # alt-c = 'workspace C'
+    alt-b = 'workspace B'
+    alt-c = 'workspace C'
     # alt-d = 'workspace D'
     # alt-e = 'workspace E'
     # alt-f = 'workspace F'
@@ -177,7 +181,7 @@ run = 'layout floating'
     # alt-q = 'workspace Q'
     # alt-r = 'workspace R'
     # alt-s = 'workspace S'
-    # alt-t = 'workspace T'
+    alt-t = 'workspace T'
     # alt-u = 'workspace U'
     # alt-v = 'workspace V'
     # alt-w = 'workspace W'
@@ -189,16 +193,16 @@ run = 'layout floating'
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
+    # alt-shift-4 = 'move-node-to-workspace 4'
+    # alt-shift-5 = 'move-node-to-workspace 5'
+    # alt-shift-6 = 'move-node-to-workspace 6'
+    # alt-shift-7 = 'move-node-to-workspace 7'
+    # alt-shift-8 = 'move-node-to-workspace 8'
+    # alt-shift-9 = 'move-node-to-workspace 9'
     # alt-shift-a = 'move-node-to-workspace A'
-    # alt-shift-b = 'move-node-to-workspace B'
-    # alt-shift-c = 'move-node-to-workspace C'
-    # alt-shift-d = 'move-node-to-workspace D'
+    alt-shift-b = 'move-node-to-workspace B'
+    alt-shift-c = 'move-node-to-workspace C'
+    alt-shift-d = 'move-node-to-workspace D'
     # alt-shift-e = 'move-node-to-workspace E'
     # alt-shift-f = 'move-node-to-workspace F'
     # alt-shift-g = 'move-node-to-workspace G'
@@ -210,7 +214,7 @@ run = 'layout floating'
     # alt-shift-q = 'move-node-to-workspace Q'
     # alt-shift-r = 'move-node-to-workspace R'
     # alt-shift-s = 'move-node-to-workspace S'
-    # alt-shift-t = 'move-node-to-workspace T'
+    alt-shift-t = 'move-node-to-workspace T'
     # alt-shift-u = 'move-node-to-workspace U'
     # alt-shift-v = 'move-node-to-workspace V'
     # alt-shift-w = 'move-node-to-workspace W'
@@ -224,18 +228,19 @@ run = 'layout floating'
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
     alt-shift-f = 'macos-native-fullscreen'
+    alt-shift-m = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
     alt-shift-enter = 'mode apps'
 
-    alt-g = 'exec-and-forget open -a /Applications/Ghostty.app'
+    alt-g = ['exec-and-forget open -a /Applications/Ghostty.app', 'workspace T']
     alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
-    alt-n = 'exec-and-forget open -a /Applications/Notion.app'
-    alt-s = 'exec-and-forget open -a /Applications/Safari.app'
-    alt-z = 'exec-and-forget open -a /Applications/Zen.app'
-    alt-f = 'exec-and-forget open -a /Applications/Firefox.app'
-    alt-d = 'exec-and-forget open -a /Applications/Discord.app'
+    alt-n = ['exec-and-forget open -a /Applications/Notion.app', 'workspace N']
+    alt-s = ['exec-and-forget open -a /Applications/Spotify.app', 'workspace S']
+    alt-z = ['exec-and-forget open -a /Applications/Zen.app', 'workspace B']
+    alt-f = ['exec-and-forget open -a /Applications/Firefox.app', 'workspace B']
+    alt-d = ['exec-and-forget open -a /Applications/Discord.app', 'workspace D']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -255,6 +260,6 @@ run = 'layout floating'
 
     # down = 'volume down'
     # up = 'volume up'
-    shift-down = ['volume set 0', 'mode main']
+    # shift-down = ['volume set 0', 'mode main']
 
 
