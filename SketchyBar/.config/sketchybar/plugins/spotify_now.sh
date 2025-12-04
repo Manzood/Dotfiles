@@ -71,7 +71,8 @@ if [ -n "$track" ] || [ -n "$artist" ]; then
   else
     label="$artist"
   fi
-  label="$(truncate_text "$label" 30)"
+  max_label_length="${SPOTIFY_LABEL_MAX:-30}"
+  label="$(truncate_text "$label" "$max_label_length")"
   draw_label="on"
 fi
 
