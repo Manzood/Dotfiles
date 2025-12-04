@@ -1,13 +1,15 @@
-# vim:ft=conf
+#!/usr/bin/env zsh
 
-# todo handle the notch
+BAR_COLOR=${COLOR_BAR:-0xe6191b2b}
 
 sketchybar --bar \
     position=top \
-    height=26 \
-    blur_radius=100 \
-    color=0x66494d64 \
+    height=${BAR_HEIGHT:-30} \
+    y_offset=0 \
+    corner_radius=0 \
+    blur_radius=45 \
+    color=$BAR_COLOR \
     margin=0 \
-    padding_left=4 \
-    padding_right=4 \
+    padding_left=0 \
+    padding_right=0 \
     sticky=on
