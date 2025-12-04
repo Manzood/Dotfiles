@@ -41,7 +41,7 @@ return {
         },
         config = function(_, opts)
             vim.diagnostic.config({ virtual_text = true });
-            local lspconfig = require('lspconfig')
+            -- local lspconfig = require('lspconfig')
             for server, config in pairs(opts.servers) do
                 -- blink.nvim
                 config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities) -- TODO wrap this in some kind of if statement?
@@ -59,7 +59,10 @@ return {
                 --     end
                 -- end
 
-                lspconfig[server].setup(config)
+                -- OLD NEOVIM LSPCONFIG FRAMEWORK
+                -- lspconfig[server].setup(config)
+                vim.lsp.config(server, config)
+                vim.lsp.enable({server})
 
                 -- classic config
                 -- lspconfig[server].setup{}
