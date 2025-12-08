@@ -4,14 +4,47 @@ truncate_text() {
   local text="$1"
   local max_length="${2:-32}"
 
-  if [ "${#text}" -le "$max_length" ]; then
-    printf "%s" "$text"
-  else
-    printf "%s…" "${text:0:$((max_length-1))}"
-  fi
+  # Keep the label within the byte budget so sketchybar won't cut UTF-8 mid-codepoint
+  python3 - "$text" "$max_length" <<'PY'
+import sys
+
+text = sys.argv[1]
+max_len = int(sys.argv[2])
+ellipsis = "…"
+ellipsis_bytes = len(ellipsis.encode("utf-8"))
+
+encoded = text.encode("utf-8")
+if len(encoded) <= max_len:
+    sys.stdout.write(text)
+    sys.exit(0)
+
+budget = max_len - ellipsis_bytes
+if budget < 0:
+    budget = 0
+
+current = 0
+chars = []
+for ch in text:
+    b = len(ch.encode("utf-8"))
+    if current + b > budget:
+        break
+    chars.append(ch)
+    current += b
+
+sys.stdout.write("".join(chars) + ellipsis)
+PY
+}
+
+spotify_running() {
+  pgrep -x "Spotify" >/dev/null 2>&1
 }
 
 read_spotify() {
+  if ! spotify_running; then
+    printf "stopped||||"
+    return
+  fi
+
   osascript <<'APPLESCRIPT'
 if application "Spotify" is running then
   tell application "Spotify"

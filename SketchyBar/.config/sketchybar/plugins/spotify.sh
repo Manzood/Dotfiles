@@ -1,22 +1,30 @@
 #!/bin/bash
 
+spotify_running() {
+  pgrep -x "Spotify" >/dev/null 2>&1
+}
+
 next ()
 {
+  spotify_running || return
   osascript -e 'tell application "Spotify" to play next track'
 }
 
 back () 
 {
+  spotify_running || return
   osascript -e 'tell application "Spotify" to play previous track'
 }
 
 play () 
 {
+  spotify_running || return
   osascript -e 'tell application "Spotify" to playpause'
 }
 
 repeat () 
 {
+  spotify_running || return
   REPEAT=$(osascript -e 'tell application "Spotify" to get repeating')
   if [ "$REPEAT" = "false" ]; then
     sketchybar -m --set spotify.repeat icon.highlight=on
@@ -29,6 +37,7 @@ repeat ()
 
 shuffle () 
 {
+  spotify_running || return
   SHUFFLE=$(osascript -e 'tell application "Spotify" to get shuffling')
   if [ "$SHUFFLE" = "false" ]; then
     sketchybar -m --set spotify.shuffle icon.highlight=on
@@ -41,6 +50,12 @@ shuffle ()
 
 update ()
 {
+  if ! spotify_running; then
+    sketchybar -m --set spotify.anchor drawing=off popup.drawing=off \
+               --set spotify.play icon=􀊄
+    return
+  fi
+
   PLAYING=1
   if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Playing" ]; then
     PLAYING=0
@@ -78,6 +93,7 @@ update ()
 }
 
 scrubbing() {
+  spotify_running || return
   DURATION_MS=$(osascript -e 'tell application "Spotify" to get duration of current track')
   DURATION=$((DURATION_MS/1000))
 
@@ -87,6 +103,7 @@ scrubbing() {
 }
 
 scroll() {
+  spotify_running || return
   DURATION_MS=$(osascript -e 'tell application "Spotify" to get duration of current track')
   DURATION=$((DURATION_MS/1000))
 
