@@ -3,7 +3,7 @@ local B = {}
 B.setup = function()
     vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
     vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
-    vim.keymap.set("n", "<C-P>", require('telescope.builtin').git_files)
+    vim.keymap.set("n", "<D-p>", require('telescope.builtin').git_files)
     vim.keymap.set("n", "<leader>fc", require('telescope.builtin').colorscheme)
     -- search through nvim config
     vim.keymap.set("n", "<space>en", function()
