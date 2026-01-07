@@ -10,21 +10,27 @@ DESKTOP_TOP_WITHOUT_SKETCHYBAR=8
 
 sketchybar_status() {
     # Prints "shown", "hidden", or "missing"
-    local query
-    if query="$(sketchybar --query bar 2>/dev/null)"; then
-        if printf '%s\n' "$query" | grep -Eiq 'hidden[[:space:]:="]*on|hidden[[:space:]:="]*true|hidden[[:space:]:="]*1'; then
-            printf 'hidden\n'
-            return
-        fi
-        # If you explicitly use `hidden=off` to hide the bar, export SKETCHYBAR_HIDDEN_IS_OFF=1 before calling this script.
-        if [ "${SKETCHYBAR_HIDDEN_IS_OFF:-0}" -eq 1 ] && printf '%s\n' "$query" | grep -Eiq 'hidden[[:space:]:="]*off|hidden[[:space:]:="]*false|hidden[[:space:]:="]*0'; then
-            printf 'hidden\n'
-            return
-        fi
-        printf 'shown\n'
-    else
+    local query exit_code
+    set +e
+    query="$(sketchybar --query bar 2>/dev/null)"
+    exit_code=$?
+    set -e
+
+    if [ "$exit_code" -ne 0 ]; then
         printf 'missing\n'
+        return
     fi
+
+    if printf '%s\n' "$query" | grep -Eiq 'hidden[[:space:]:="]*on|hidden[[:space:]:="]*true|hidden[[:space:]:="]*1'; then
+        printf 'hidden\n'
+        return
+    fi
+    # If you explicitly use `hidden=off` to hide the bar, export SKETCHYBAR_HIDDEN_IS_OFF=1 before calling this script.
+    if [ "${SKETCHYBAR_HIDDEN_IS_OFF:-0}" -eq 1 ] && printf '%s\n' "$query" | grep -Eiq 'hidden[[:space:]:="]*off|hidden[[:space:]:="]*false|hidden[[:space:]:="]*0'; then
+        printf 'hidden\n'
+        return
+    fi
+    printf 'shown\n'
 }
 
 bar_state="missing"
