@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 mouse-hide-while-typing = true
 window-decoration = true
 keybind = global:cmd+g=toggle_quick_terminal
@@ -8,3 +8,4 @@ keybind = ctrl+[=esc:
 font-feature=-calt
 # font-feature=-liga # disable other ligatures
 # font-feature=-dlig # disable other ligatures
+keybind = shift+enter=text:\x1b\r
