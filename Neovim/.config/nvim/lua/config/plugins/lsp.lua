@@ -59,13 +59,8 @@ return {
                 --     end
                 -- end
 
-                -- OLD NEOVIM LSPCONFIG FRAMEWORK
-                -- lspconfig[server].setup(config)
                 vim.lsp.config(server, config)
-                vim.lsp.enable({server})
-
-                -- classic config
-                -- lspconfig[server].setup{}
+                vim.lsp.enable({ server })
 
                 -- nvim-cmp
                 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
