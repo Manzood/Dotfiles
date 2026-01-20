@@ -45,21 +45,25 @@ read_spotify() {
     return
   fi
 
+  # Use System Events to check process existence - this doesn't trigger app launches
+  # unlike directly addressing "application Spotify" which can relaunch a closing app
   osascript <<'APPLESCRIPT'
-if application "Spotify" is running then
-  tell application "Spotify"
-    set playerState to player state as text
-    if playerState is "playing" or playerState is "paused" then
-      set trackName to name of current track
-      set artistName to artist of current track
-      return playerState & "||" & trackName & "||" & artistName
-    else
-      return playerState & "||||"
-    end if
-  end tell
-else
-  return "stopped||||"
-end if
+tell application "System Events"
+  if not (exists process "Spotify") then
+    return "stopped||||"
+  end if
+end tell
+
+tell application "Spotify"
+  set playerState to player state as text
+  if playerState is "playing" or playerState is "paused" then
+    set trackName to name of current track
+    set artistName to artist of current track
+    return playerState & "||" & trackName & "||" & artistName
+  else
+    return playerState & "||||"
+  end if
+end tell
 APPLESCRIPT
 }
 
