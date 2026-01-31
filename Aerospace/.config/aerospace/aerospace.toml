@@ -170,10 +170,10 @@ run = 'layout floating'
     # alt-7 = 'workspace 7'
     # alt-8 = 'workspace 8'
     # alt-9 = 'workspace 9'
-    # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
+    alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
     alt-b = 'workspace B'
     alt-c = 'workspace C'
-    # alt-d = 'workspace D'
+    alt-d = 'workspace D'
     # alt-e = 'workspace E'
     # alt-f = 'workspace F'
     # alt-g = 'workspace G'
@@ -203,7 +203,7 @@ run = 'layout floating'
     # alt-shift-7 = 'move-node-to-workspace 7'
     # alt-shift-8 = 'move-node-to-workspace 8'
     # alt-shift-9 = 'move-node-to-workspace 9'
-    # alt-shift-a = 'move-node-to-workspace A'
+    alt-shift-a = 'move-node-to-workspace A'
     alt-shift-b = 'move-node-to-workspace B'
     alt-shift-c = 'move-node-to-workspace C'
     alt-shift-d = 'move-node-to-workspace D'
@@ -244,7 +244,7 @@ run = 'layout floating'
     alt-s = ['exec-and-forget open -a /Applications/Spotify.app', 'workspace S']
     alt-z = ['exec-and-forget open -a /Applications/Zen.app', 'workspace B']
     alt-f = ['exec-and-forget open -a /Applications/Firefox.app', 'workspace B']
-    alt-d = ['exec-and-forget open -a /Applications/Discord.app', 'workspace D']
+    # alt-d = ['exec-and-forget open -a /Applications/Discord.app', 'workspace D']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
