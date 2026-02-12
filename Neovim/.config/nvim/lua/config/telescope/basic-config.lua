@@ -21,9 +21,15 @@ B.setup = function()
     end)
     vim.keymap.set("n", "<leader>fc", require('telescope.builtin').colorscheme)
     -- search through nvim config
-    vim.keymap.set("n", "<space>en", function()
+    vim.keymap.set("n", "<leader>en", function()
         local opts = require('telescope.themes').get_ivy({
             cwd = vim.fn.stdpath("config")
+        })
+        require('telescope.builtin').find_files(opts)
+    end)
+    vim.keymap.set("n", "<leader>os", function()
+        local opts = require('telescope.themes').get_ivy({
+            cwd = '/Users/manzood/Notes/obsidian/Personal'
         })
         require('telescope.builtin').find_files(opts)
     end)
