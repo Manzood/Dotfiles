@@ -41,6 +41,9 @@ case $INFO in
 "Finder")
     ICON=󰀶
     ;;
+"Ghostty")
+    ICON=󰊠
+    ;;
 "Google Chrome")
     ICON_PADDING=7
     ICON=
@@ -58,6 +61,10 @@ case $INFO in
 "Notion")
     ICON_PADDING=6
     ICON=󰎚
+    ;;
+"Obsidian")
+    ICON_PADDING=4
+    ICON=󱓧
     ;;
 "Preview")
     ICON_PADDING=3
@@ -78,6 +85,9 @@ case $INFO in
 "Transmission")
     ICON_PADDING=3
     ICON=󰶘
+    ;;
+"Zen"*)
+    ICON=󰈹
     ;;
 *)
     ICON_PADDING=2

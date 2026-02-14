@@ -56,6 +56,7 @@ default=(
 sketchybar --default "${default[@]}"
 
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event aerospace_mode_change
 sketchybar --add event spotify_change $SPOTIFY_EVENT
 
 SPACE_PILL_WIDTH=34
@@ -106,6 +107,24 @@ for sid in "${SPACES_LIST[@]}"; do
                  script="$PLUGIN_DIR/aerospace.sh $sid $SPACE_ACTIVE_BG $SPACE_INACTIVE_BG $SPACE_ACTIVE_FG $SPACE_INACTIVE_FG" \
              --subscribe space.$sid aerospace_workspace_change
 done
+
+sketchybar --add item aerospace_mode left \
+           --set aerospace_mode \
+               drawing=off \
+               icon.drawing=off \
+               label.font="$FONT_FACE:Bold:${SPACE_FONT_SIZE}" \
+               label.color=$COLOR_ACCENT_TEXT \
+               label.padding_left=8 \
+               label.padding_right=8 \
+               label.y_offset=0 \
+               background.drawing=on \
+               background.color=$COLOR_WARN \
+               background.corner_radius=$CORNER_RADIUS \
+               background.height=$ITEM_HEIGHT \
+               padding_left=4 \
+               padding_right=0 \
+               script="$PLUGIN_DIR/aerospace_mode.sh" \
+           --subscribe aerospace_mode aerospace_mode_change
 
 sketchybar --add item front_app.gap left \
            --set front_app.gap \
