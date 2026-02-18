@@ -59,6 +59,7 @@ B.setup = function()
         })
         require('telescope.builtin').find_files(opts)
     end)
+    vim.keymap.set("n", "<leader>et", "<cmd>Neotree toggle<cr>", { desc = "Neo-tree: Toggle" })
 end
 
 return B
