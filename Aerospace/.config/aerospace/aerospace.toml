@@ -92,6 +92,10 @@ run = 'move-node-to-workspace O'
 if.app-name-regex-substring = 'Spotify'
 run = 'move-node-to-workspace S'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'Microsoft Teams'
+run = 'move-node-to-workspace Y'
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
@@ -209,7 +213,7 @@ run = 'move-node-to-workspace S'
     # alt-v = 'workspace V'
     # alt-w = 'workspace W'
     # alt-x = 'workspace X'
-    # alt-y = 'workspace Y'
+    alt-y = 'workspace Y'
     # alt-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -242,7 +246,7 @@ run = 'move-node-to-workspace S'
     # alt-shift-v = 'move-node-to-workspace V'
     # alt-shift-w = 'move-node-to-workspace W'
     # alt-shift-x = 'move-node-to-workspace X'
-    # alt-shift-y = 'move-node-to-workspace Y'
+    alt-shift-y = 'move-node-to-workspace Y'
     # alt-shift-z = 'move-node-to-workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
@@ -261,7 +265,6 @@ run = 'move-node-to-workspace S'
     alt-s = ['exec-and-forget open -a /Applications/Spotify.app', 'workspace S']
     alt-z = ['exec-and-forget open -a /Applications/Zen.app', 'workspace B']
     alt-f = ['exec-and-forget open -a /Applications/Firefox.app', 'workspace B']
-    # alt-d = ['exec-and-forget open -a /Applications/Discord.app', 'workspace D']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
