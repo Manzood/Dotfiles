@@ -11,6 +11,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 # maybe switch between two workspaces and then forget to show the sketchybar active workspace thing?
 after-startup-command = [
+  'exec-and-forget sketchybar --reload',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
   'exec-and-forget /bin/bash ~/.config/aerospace/bin/ensure-sketchybar-running.sh',
   'exec-and-forget ~/.config/aerospace/bin/sync-sketchybar-gaps.sh',
