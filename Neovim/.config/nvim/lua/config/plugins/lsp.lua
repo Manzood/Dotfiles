@@ -36,7 +36,12 @@ return {
                         },
                     },
                 },
-                clangd = {}
+                clangd = {
+                    cmd = {
+                        "/opt/homebrew/opt/llvm/bin/clangd",
+                        "--query-driver=/Users/manzood/.local/bin/g++",
+                    }
+                }
             }
         },
         config = function(_, opts)
